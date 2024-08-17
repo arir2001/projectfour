@@ -64,7 +64,7 @@
                             content
                         </a>
                             <ul  class="dropdown-menu" aria-labelledby="navbarDropdown"> 
-                            <li><a class="dropdown-item" href="#">Blog</a></li>
+                            <li><a class="dropdown-item nav-link {% if request.path == '/blog/' %}active{% endif %}" href="{% url 'blog' %}">Blog</a></li>
                             <li><a class="dropdown-item" href="#">Podcast</a></li>
                             <li><a class="dropdown-item" href="#">YouTube</a></li>
                             <li><hr class="dropdown-divider"></li>

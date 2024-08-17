@@ -3,7 +3,7 @@ body{
     background-color: white;
 }
 
-/* navbar */
+/* navbar and footer*/
 #dropdowndiv{
     position: relative;
 }
@@ -26,6 +26,11 @@ body{
 
 .navbar{
     background-color: #C20808;
+}
+
+.footer {
+    background-color: #C20808; /* Ensure the footer has a background color */
+    color: #fff; /* Text color */
 }
 
 /* landing */
@@ -191,10 +196,3 @@ p a{
 }
 
 
-.footer {
-    background-color: #C20808; /* Ensure the footer has a background color */
-    color: #fff; /* Text color */
-}
-.dark-bg {
-    background-color: #333; /* Ensure dark background color is set */
-}
