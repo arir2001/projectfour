@@ -29,6 +29,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '8000-arir2001-projectfour-8itw6yp9p23.ws-eu115.gitpod.io'
+    ,'.herokuapp.com'
 ]
 
 
