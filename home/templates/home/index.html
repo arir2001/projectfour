@@ -1,12 +1,161 @@
 {% extends 'base.html'%}
-
+{% load static %}
 {% block content %}
 <html>
 <head>
     <title>Home Page</title>
 </head>
 <body>
-    <h1>Welcome to the Home Page!</h1>
+    <section id="landing">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <img src="{% static 'images/logo.png' %}" alt="Large Logo"  id="landinglogo">
+                    </div>
+                    <div class="row">
+                        <div >
+                            <h1 class="handwriting text-center" id="landinghello"> 
+                                <span>Hi there, I'm Anna</span> <br>
+                                <span> and I'm your new coach.</span></h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 ">
+                    <div class="d-flex justify-content-end d-none d-md-block">
+                        <img src="{% static 'images/whiteboard.png' %}" alt="Whiteboard Woman"  class="landingimage1 landingimage">
+                    </div>
+                    <div class="d-none">
+                        <img src="{% static 'images/bwlandingimage.png' %}" alt="Black and White image"  class="landingimage2 landingimage">
+                    </div>
+                    <div class="d-none">
+                        <img src="{% static 'images/landingimage3.png' %}" alt="Typing and coffee"  class="landingimage3 landingimage">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section id="coachdescription">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col coachintrodiv text-center" >
+                    <h2 class="handwriting " id="coachintro"> 
+                        <span>I became a life and business coach in 2021, </span> 
+                        <span>after a period of deep questioning during the Pandemic. </span> 
+                        <span>Since then, I have helped countless individuals find their </span> 
+                        <span>strength to peruse and achieve  their core dreams.</span> 
+                    </h2>
+                    <h5 class='inter'>
+                        Find out more about my story <a href="#"><strong>here</strong></a>
+                    </h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col coachdescriptiondiv libre-baskerville-regular text-left" >
+                    <h1 class="libre-baskerville-bold"> coach</h1>
+                    <div  id="coachdef"> 
+                        <h2 class="libre-baskerville-bold">[kōch] · noun English</h2>
+                        <h3> 
+                        a passionate and dedicated person who unlocks hidden potential 
+                        and maximizes performance by encourraging, developing and belieiving.
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <section id="coachingservices">
+        <div class="container-fluid">
+            <div class="row coachingservicesdiv">
+                <h2 class="libre-baskerville-regular text-center" style="padding: 5%;"> My services </h2>
+
+                <div class="col-md-6 libre-baskerville-regular coachingservicesinnerdiv">
+                    <ul>
+                        <li>goal tracking</li>
+                        <li>business design</li>
+                        <li>accountability</li>
+                        <li>life-balance analysis</li>
+                        <li>personality assesment</li>
+                    </ul>
+                </div>
+                <div class="col-md-6 coachingservicesinnerdiv inter">
+                    <p>I am an EMCC accredited Executive Coach and a faculty member 
+                        at Kingstown College. I have over three decades of experience 
+                        in Business Mentoring and Consultancy, Personal and Professional 
+                        Coaching, and Community Development Programmes.</p>
+                </div>
+
+                <div class="row coachingservicesinnerdiv handwriting">
+                    <div class="col-md-4 text-center">
+                        <button class="servicesbutton m-2 btn btn-outline-primary" type="button">
+                        more about me
+                        </button>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <button class="servicesbutton  m-2 btn btn-outline-primary" type="button">
+                        all my services
+                        </button>
+                    </div>
+                    <div class="col-md-4 text-center ">
+                        <button class="servicesbutton  m-2 btn btn-outline-primary" type="button">
+                        inquire
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row clientdiv d-flex justify-content-center">
+                    <h2 class="libre-baskerville-regular title"> What my clients have said...</h2>
+                    <div class="testimonialdiv">
+                        hehe that was a good coaching session
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section id="contentlanding">
+        <div class="row d-flex p-3"> 
+            <div class="col-md-6 d-flex justify-content-center mt-2">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class=" embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+                  </div>
+            </div>
+            <div class="col-md-6">
+                <div class="embeddedcomment libre-baskerville-regular d-none d-md-block">
+                    <h4>Looking for inspiration? 
+
+                        Watch my Youtube Videos
+                        
+                        and power up your day!
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="row d-flex ">
+            <div class="col libre-baskerville-regular">
+                <h1 class='m-2 d-none d-md-block'> Read my most recent blog post: </h1>
+                <div class="blog_post_tease">
+                    <h1> The benefits of 
+                        having an 
+                        accountability partner
+                    </h1>
+                    <p> 
+                        Lorem ipsum dolor sit amet, 
+                        consectetur adipiscing elit, 
+                        sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua. 
+                        Ut enim ad minim veniam, quis nostrud 
+                        exercitation ullamco 
+                    </p>
+                    <span>..... read more -></span>
+                </div>
+            </div>
+        </div>
+            
+        </div>
+    </section>
 </body>
 </html>
 
