@@ -1,0 +1,198 @@
+
+body{
+    background-color: white;
+}
+
+/* navbar and footer*/
+#dropdowndiv{
+    position: relative;
+}
+
+.nav-item{
+    padding-right: 8px;
+    font-size: 1.2rem;
+    font-weight: 200;
+}
+
+.nav-link:hover{
+    color: white !important;
+}
+
+#logo {
+    max-width: 18%;
+    max-height: 18%;
+}
+
+
+.navbar{
+    background-color: #C20808;
+}
+
+.footer {
+    background-color: #C20808; /* Ensure the footer has a background color */
+    color: #fff; /* Text color */
+}
+
+/* landing */
+
+#landing{
+    background-color: #C20808;
+}
+
+.handwriting{
+    font-family: "Zeyada", cursive;
+}
+
+.libre-baskerville-regular {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+.libre-baskerville-bold {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+  
+.libre-baskerville-regular-italic {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+
+.inter{
+    font-family: "Inter";
+}
+
+#landinghello{
+    font-size: 2.8rem;
+    color: white;
+}
+
+#landinglogo{
+    width: 100%;
+    padding: 10%;
+}
+
+.landingimage{
+    width: 70%
+}
+
+.landingimage1{
+    z-index: 1; /* Ensure this image is behind the other */
+}
+
+#landingimage2{
+    z-index: 2; /* Ensure this image is behind the other */
+    top: 30%;
+    left: 55%;
+}
+
+#landingimage3{
+    z-index: 3; /* Ensure this image is behind the other */
+}
+
+/*coach intro*/
+
+#coachdescription{
+
+}
+
+.coachintrodiv{
+    margin: 4%;
+    padding: 2%;
+    color: #3F0404;
+}
+
+#coachintro{
+    font-size: 2rem;
+}
+
+.coachdescriptiondiv{
+    margin: 4%;
+    padding: 2%;
+    color: #3F0404;
+    background-color: #FDF0D5;
+}
+
+#coachdef{
+    font-size: 1.5rem;
+
+}
+
+p a{
+    text-decoration: none; 
+}
+
+/* services*/
+
+.coachingservicesdiv{
+    background: linear-gradient(#003049, #CDDEE9);
+    color: white;
+    font-size: 1rem;
+    padding: 2%;
+}
+
+.coachingservicesinnerdiv{
+    padding: 4%;
+}
+
+.servicesbutton{
+    color: #712222;
+    border-color: #669BBC;
+    font-size: 1.5rem;
+    background-color: #669BBC;
+}
+
+.btn-outline-primary:active {
+    color: #fff;
+    background-color: #669BBC;
+    margin: 2%;
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #669BBC;
+}
+
+.title{
+    color:#1079BA;
+    text-align: center;
+}
+
+.clientdiv{
+    padding: 5%;
+}
+
+.testimonialdiv{
+    background-color: #669BBC;
+    border-radius: 25px;
+    padding: 10%;
+    height: 50%;
+    width: 90%;
+    margin: 5%;
+}
+
+/* conent section */ 
+
+.embedded{
+    margin: 2%;
+    flex-grow: 1;
+}
+
+.embeddedcomment{
+    padding: 2%;
+    text-align: center;
+    margin: 2%;
+}
+
+.blog_post_tease{
+    padding: 5%;
+    margin: 5%;
+    border-radius: 10%;
+    background-color: grey;
+}
+
+
