@@ -18,7 +18,7 @@
                                     <h2 class="author">Author: {{ post.author }}</h2>
                                 </div>
                             </div>
-                            <a href="#" class="post-link">
+                            <a href="{% url 'blogpost' post.slug %}" class="post-link">
                                 <h4 class="card-title">{{ post.title }}</h4>
                                 <p class="card-text"> {{ post.excerpt |truncatewords:20|slice:":-1" }}.. <strong>read more</strong> </p>
                             </a>
