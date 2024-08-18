@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.contrib import messages
 from .models import Post
@@ -33,16 +33,23 @@ def post_detail(request, slug):
     if request.method == "POST":
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
+             #create comment object but don't save yet
             comment = comment_form.save(commit=False)
+             #assign the post to the comment
             comment.author = request.user
+            #set comment to waiting for approval
             comment.post = post
+            #save the comment
             comment.save()
+
+             #redirect to the same post after saving the comment to avoid duplication on refresh
+            return redirect('blogpost',  slug=post.slug)
+
             messages.add_message(
                 request, messages.SUCCESS,
                 'Comment submitted and awaiting approval'
     )
-
-
+    
     comment_form = CommentForm()
 
     return render(

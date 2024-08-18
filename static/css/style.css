@@ -360,7 +360,19 @@ p a{
     color: rgb(222, 146, 168);
 }
 
+.comments{
+    border: solid 0.5px;
+    border-color: lightgrey;
+}
+
+.commentdiv{
+    overflow-y: auto;
+    height: 30vh;
+    width: 90vw;
+    border: solid grey;
+}
 /* divs in blog would overlap on navbar -- this fixes it. */
 .image-container, .image-flash {
     position: relative; /* Ensure correct stacking context */
 }
+

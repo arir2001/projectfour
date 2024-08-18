@@ -27,7 +27,7 @@ def archive(modeladmin, request, queryset):
 
 
 @admin.register(Post)
-class PostAdmin(SummernoteModelAdmin):    # Specify ordering in admin by status, then by created_on
+class PostAdmin(SummernoteModelAdmin):    
     ordering = ['status', '-created_on']  # Order by status first, then created_on in descending order
 
     list_display = ('title', 'slug', 'status')
