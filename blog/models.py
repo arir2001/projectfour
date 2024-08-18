@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Post and comment models adapted from CodeInstitute Django Blog
 
-STATUS = ((0, "Draft"), (1, "Published"))
+STATUS = ((0, "Draft"), (1, "Published"), (2, "Archived"))
 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)

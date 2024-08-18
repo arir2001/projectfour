@@ -51,10 +51,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'home',
-    'django_summernote',
     'blog',
     'crispy_forms',
+    'crispy_bootstrap5',
+    'django_summernote',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -89,6 +91,8 @@ TEMPLATES = [
 #THIS IS THE ROUTE!
 WSGI_APPLICATION = 'coaching.wsgi.application'
 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
