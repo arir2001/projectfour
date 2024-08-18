@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
+# Post and comment models adapted from CodeInstitute Django Blog
 
 STATUS = ((0, "Draft"), (1, "Published"))
 

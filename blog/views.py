@@ -5,6 +5,7 @@ from .models import Post
 from .forms import CommentForm
 
 # Create your views here.
+# Post and comment models adapted from CodeInstitute Django Blog
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1)
     template_name = "blog/index.html"
