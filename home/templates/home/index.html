@@ -1,5 +1,6 @@
 {% extends 'base.html'%}
 {% load static %}
+{% load blog_extras %}
 {% block content %}
 <html>
 <head>
@@ -135,22 +136,18 @@
         </div>
         <div class="row d-flex ">
             <div class="col libre-baskerville-regular">
+                {% get_recent_blog_posts as recent_posts %}
+                {% for post in recent_posts %}
                 <h1 class='m-2 d-none d-md-block'> Read my most recent blog post: </h1>
                 <div class="blog_post_tease">
-                    <h1> The benefits of 
-                        having an 
-                        accountability partner
+                    <h1> {{post.title}}
                     </h1>
                     <p> 
-                        Lorem ipsum dolor sit amet, 
-                        consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt
-                        ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud 
-                        exercitation ullamco 
+                        {{ post.excerpt }}
                     </p>
-                    <span>..... read more -></span>
+                    <a href="{% url 'blogpost' post.slug %}">..... read more -></a>
                 </div>
+                {% endfor %}
             </div>
         </div>
             
