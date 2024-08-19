@@ -105,12 +105,22 @@
                         </button>
                     </div>
                 </div>
-
+                
                 <div class="row clientdiv d-flex justify-content-center">
                     <h2 class="libre-baskerville-regular title"> What my clients have said...</h2>
-                    <div class="testimonialdiv">
-                        hehe that was a good coaching session
+                    {% for testimonial in testimonials %}
+                    <div class="testimonialdiv mySlides libre-baskerville-regular-italic"">
+                        <div class="col d-flex align-content-stretch flex-wrap flex-column">
+                            <div class="col">
+                                <div class="row service mt-0"><p class="libre-baskerville-bold m-0">{{ testimonial.get_service_display}}</p></div>
+                                <div class="row"><p >{{testimonial.name}}, {{ testimonial.age }}, {{ testimonial.extra_detail }}</p></div>
+                            </div>
+                            <div class="col testimonial-row libre-baskerville-regular">
+                                <p >{{testimonial.testimonial| safe}}</p>
+                            </div>    
+                        </div>                    
                     </div>
+                    {% endfor %}
                 </div>
 
             </div>

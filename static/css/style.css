@@ -57,7 +57,7 @@ body{
   
 .libre-baskerville-regular-italic {
     font-family: "Libre Baskerville", serif;
-    font-weight: 400;
+    font-weight: 200;
     font-style: italic;
 }
 
@@ -167,12 +167,33 @@ p a{
 }
 
 .testimonialdiv{
-    background-color: #669BBC;
+    background-color: #669bbc54;
     border-radius: 25px;
     padding: 10%;
     height: 50%;
     width: 90%;
     margin: 5%;
+    flex: 1; /* ensures the containers are equal height */
+    min-height: 300px;
+}
+
+.mySlides {display:none;}
+
+.testimonial-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; /* ensures all children have the same height */
+}
+
+.service{
+    background-color: #0030494a;
+    border: solid;
+    border-radius: 25px;
+    height: 50%;
+    width: 90%;
+    margin: 5%;
+    padding: 5%;
+    text-align: center;
 }
 
 /* conent section */ 
@@ -195,6 +216,10 @@ p a{
     background-color: grey;
 }
 
+.blog_post_tease a{
+    color: black;
+    text-decoration: none;
+}
 
 /* blog post CSS adapted from Code Institute.*/
 
