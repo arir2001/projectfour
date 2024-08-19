@@ -35,6 +35,7 @@ class PostAdmin(SummernoteModelAdmin):
     list_filter = ('status',)
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
+    actions = [re_draft, publish, archive]
     
     
 
