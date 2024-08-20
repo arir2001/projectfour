@@ -1,11 +1,24 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+{% load crispy_forms_tags %}
 
-<!-- index.html content starts here -->
+<!-- index.html content starts here         <form method="get">
+            <div class="input-group rounded p-2 m-2">
+                <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <span class="input-group-text border-0" id="search-addon">{{ search_form | crispy }}
+                    <button id="submitButton" type="submit" class="btn btn-signup btn-lg"><i class="fas fa-search"></i></button>
+                </span>
+            </div>
+        </form>-->
 <div class="container-fluid">
-    <div class="row">
+    <form method="POST" action="{% url 'search-posts' %}">
+        {% csrf_token %}
+        <input type="text" name="searched" value="{{ search_term }}" placeholder="Search by title or tags..." class="form-control">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
 
+    </div>
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             <div class="row">
@@ -16,16 +29,21 @@
                             <div class="image-container">
                                 <div class="image-flash">
                                     <h2 class="author">Author: {{ post.author }}</h2>
+                                    <div class=" fill img-fluid">
+                                        {% if post.mastimage %}
+                                        <img class='blogpostlist_image' src="{{ post.mastimage.url }}" alt="Mast Image">
+                                        {% else %}
+                                        <img class='blogpostlist_image' src="{% static 'images/whiteboard.png' %}" ." alt="Mast Image">
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                             <a href="{% url 'blogpost' post.slug %}" class="post-link">
                                 <h4 class="card-title">{{ post.title }}</h4>
                                 <p class="card-text"> {{ post.excerpt |truncatewords:20|slice:":-1" }}.. <strong>read more</strong> </p>
                             </a>
-
                             <hr />
                             <p class="card-text text-muted h6">{{ post.created_on}}</p>
-                            
                         </div>
                     </div>
                 </div>

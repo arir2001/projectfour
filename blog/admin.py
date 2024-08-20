@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
 from blog.models import Post, Comment
+from django.utils.html import format_html
 
 # Register your models here.
 #actions for comments. 
@@ -30,13 +31,25 @@ def archive(modeladmin, request, queryset):
 class PostAdmin(SummernoteModelAdmin):    
     ordering = ['status', '-created_on']  # Order by status first, then created_on in descending order
 
-    list_display = ('title', 'slug', 'status')
+    list_display = ('title', 'slug', 'status', 'tagslist', 'mastimage_thumbnail')
     search_fields = ['title']
     list_filter = ('status',)
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
     actions = [re_draft, publish, archive]
-    
+
+    def mastimage_thumbnail(self, obj):
+        if obj.mastimage:
+            return format_html('<a href="{url}" target="_blank">View Image</a>', url=obj.mastimage.url)
+        return 'No image'
+
+    mastimage_thumbnail.short_description = 'Image Preview'
+
+    def tagslist(self, obj):
+        if obj.tags.exists():
+            tags = ', '.join(tag.name for tag in obj.tags.all())  
+            return format_html(tags)
+        return 'No tags'
     
 
 @admin.register(Comment)

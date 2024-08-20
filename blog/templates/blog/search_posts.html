@@ -1,0 +1,17 @@
+
+{% load static %}
+{% block content%}
+{% load crispy_forms_tags %}
+
+<p>You searched...</p>
+
+{% if searched %}
+    <h1> You searched for {{searched}}  </h1>
+    {%for title in titles%}
+        {{title}}
+    {%endfor%}
+{% else %}
+    <p> whomp</p>
+{% endif %}
+
+{% endblock %}

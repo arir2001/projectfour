@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from taggit.managers import TaggableManager
 
 # Post and comment models adapted from CodeInstitute Django Blog
 
@@ -17,6 +18,9 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
+    tags = TaggableManager()
+
+    mastimage = models.ImageField(upload_to='media/masthead_images/', blank=True, null=True, default='static/images/whiteboard.png')
     
     viewcount = models.PositiveIntegerField(default=0)  # View Count Field
 

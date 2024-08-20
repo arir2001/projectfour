@@ -3,30 +3,35 @@ from django.views import generic
 from django.contrib import messages
 from .models import Post
 from .forms import CommentForm
+from django.db.models import Q
 
 # Create your views here.
 # Post and comment models adapted from CodeInstitute Django Blog
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1)
-    template_name = "blog/index.html"
     paginate_by = 6
 
+def search_posts(request):
+    queryset = Post.objects.filter(status=1)
+    if request.method == "POST":
+        searched = request.POST.get('searched', '')
+        titles = queryset.filter(title__icontains=searched)
+        return render(
+            request, 
+            "blog/search_posts.html", 
+            {'searched': searched,
+            'titles': titles,
+            })
+    else:         
+        return render(request, "blog/search_posts.html", {})
+
+        
+
 def post_detail(request, slug):
-    """
-    Display an individual :model:`blog.Post`.
-
-    **Context**
-
-    ``post``
-        An instance of :model:`blog.Post`.
-
-    **Template:**
-
-    :template:`blog/post_detail.html`
-    """
 
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
+    masthead_image = post.mastimage
     comments = post.comments.all().order_by("-created_on")
     comment_count = post.comments.filter(approved=True).count()
 
@@ -60,5 +65,6 @@ def post_detail(request, slug):
             "comments": comments,
             "comment_count": comment_count,
             "comment_form": comment_form,
+            "mastimage": masthead_image,
         },
     )
