@@ -411,4 +411,3 @@ p a{
 .image-container, .image-flash {
     position: relative; /* Ensure correct stacking context */
 }
-

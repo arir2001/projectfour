@@ -2,6 +2,8 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block blog_content %}
+{% load blog_extras %}
+
 <div class="row">
     {% for post in post_list %}
     <div class="col-md-4">

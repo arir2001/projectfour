@@ -18,7 +18,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
 
     mastimage = models.ImageField(upload_to='media/masthead_images/', blank=True, null=True, default='static/images/whiteboard.png')
     
@@ -29,6 +29,8 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-created_on"]
+
+
 
 
 class Comment(models.Model):

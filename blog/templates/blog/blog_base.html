@@ -4,18 +4,24 @@
 {% load crispy_forms_tags %}
 
 <div class="container-fluid">
-    <form method="POST" action="{% url 'search-posts' %}">
-        {% csrf_token %}
-        <input type="text" name="searched" value="{{ search_term }}" placeholder="Search by title or tags..." class="form-control">
-        <button type="submit" class="btn btn-primary">Search</button>
-    </form>
-
+    <div class="row mt-2">
+        <div class="col">
+            <form method="POST" action="{% url 'search-posts' %}">
+                {% csrf_token %}
+                <div class="col d-flex justify-content-space-evenly align-items-center">
+                    <input class="form-control mr-sm-2" type="text" name="searched" value="{{ search_term }}" placeholder="Search by title or tags..." class="form-control">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="col-md-12  mt-3 left">
-        {% block search_content %}
-        <!-- Search content will go here -->
-        {% endblock %}
-    </div>
+    <!-- Search content will go here -->
+    <div>
+        <div class="col-md-12  mt-3 left">
+            {% block search_content %}
+            <!-- Search content will go here -->
+            {% endblock %}
+        </div>
         <!-- Blog Entries Column -->
         <div class="col-12 mt-3 left">
             {% block blog_content %}

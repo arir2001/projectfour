@@ -2,16 +2,51 @@
 {% load static %}
 {% block search_content %}
 {% load crispy_forms_tags %}
-
-<p>You searched...</p>
-
-{% if searched %}
-    <h1> You searched for {{searched}}  </h1>
-    {%for title in titles%}
-        {{title}}
-    {%endfor%}
-{% else %}
-    <p> whomp</p>
-{% endif %}
+{% load blog_extras %}
+<div class="row">
+    {% if searched %}
+        <h1> You searched for {{searched}}  </h1>
+        {%if titles%}
+            {%for post in titles%}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="image-container">
+                            <div class="image-flash">
+                                <h2 class="author">Author: {{ post.author }}</h2>
+                                <div class=" fill img-fluid">
+                                    {% if post.mastimage %}
+                                    <img class='blogpostlist_image' src="{{ post.mastimage.url }}" alt="Mast Image">
+                                    {% else %}
+                                    <img class='blogpostlist_image' src="{% static 'images/whiteboard.png' %}" ." alt="Mast Image">
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{% url 'blogpost' post.slug %}" class="post-link">
+                            <h4 class="card-title">{{ post.title }}</h4>
+                            <p class="card-text"> {{ post.excerpt |truncatewords:20|slice:":-1" }}.. <strong>read more</strong> </p>
+                        </a>
+                        <hr />
+                        <p class="card-text text-muted h6">{{ post.created_on}}</p>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        {%else%}
+        <div class="col">
+            <h2> Nothing related to your search.</h2>
+        {%endif%}
+    {% else %}
+        <h1> You did not search for anything. </h1>
+    {% endif %}
+    <div class="row">
+        <h2> You might like this:</h2>
+        {% block recent_post_html %}
+        <!-- Search content will go here -->
+        {% endblock %}
+    </div>
+</div>
+</div>
 
 {% endblock %}
