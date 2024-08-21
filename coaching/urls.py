@@ -26,6 +26,7 @@ urlpatterns = [
     path('summernote/', include('django_summernote.urls')),
     path('', include('home.urls')),  # Map the home view to the root URL
     path('', include("blog.urls"), name='blog'),
+    path("accounts/", include("allauth.urls")),
 ]
 
 
