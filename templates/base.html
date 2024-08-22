@@ -96,6 +96,15 @@
     </nav>
 
     <main class="flex-shrink-0 main-bg">
+        {% if messages %}
+        <div class="alert-messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
 
         {% block content %}
         <!-- Content Goes here -->
@@ -118,7 +127,10 @@
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
         </script>
     <!-- custom script -->
-    <script src="{% static 'js/script.js' %}"></script>
+    {% block extras1 %}
+    {% endblock %}
+    {% block extras %}
+    {% endblock %}
 </body>
 
 </html>

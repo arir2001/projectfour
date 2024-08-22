@@ -221,6 +221,14 @@ p a{
     text-decoration: none;
 }
 
+/* inquiry CSS */
+.messages{
+    
+}
+
+
+
+
 /* blog post CSS adapted from Code Institute.*/
 
 .brand {
@@ -415,3 +423,4 @@ p a{
 .image-container, .image-flash {
     position: relative; /* Ensure correct stacking context */
 }
+

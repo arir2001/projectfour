@@ -66,3 +66,5 @@ window.onload = function() {
   /*start the timer for the first time on page load.*/
   startTimer();
 };
+
+
