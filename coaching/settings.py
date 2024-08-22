@@ -38,7 +38,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '')  # directory where media files will be s
 SECRET_KEY = 'django-insecure-d*@)=umdr^krouu&xai(-)#(9^ywuvv2xs+#*9jgme*_8xk=y)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '8000-arir2001-projectfour-8itw6yp9p23.ws-eu115.gitpod.io'

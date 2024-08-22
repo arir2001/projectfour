@@ -17,7 +17,9 @@ def search_posts(request):
     if request.method == "POST":
         searched = request.POST.get('searched', '')
         titles = queryset.filter(title__icontains=searched)
-        return render(
+        return 
+
+        render(
             request, 
             "blog/search_posts.html", 
             {'searched': searched,
@@ -37,6 +39,7 @@ def post_detail(request, slug):
     comment_count = post.comments.filter(approved=True).count()
 
     if request.method == "POST":
+        print("Received a POST request") 
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
              #create comment object but don't save yet
@@ -50,13 +53,14 @@ def post_detail(request, slug):
 
              #redirect to the same post after saving the comment to avoid duplication on refresh
             return redirect('blogpost',  slug=post.slug)
-
+            print("Received a comment request") 
             messages.add_message(
                 request, messages.SUCCESS,
                 'Comment submitted and awaiting approval'
     )
     
     comment_form = CommentForm()
+    
 
     return render(
         request,
