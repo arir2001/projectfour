@@ -32,7 +32,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # Define the MEDIA_URL and MEDIA_ROOT
 MEDIA_URL = '/media/'  # URL to access media files
-MEDIA_ROOT = os.path.join(BASE_DIR, '')  # directory where media files will be stored from blog posts
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # directory where media files will be stored from blog posts
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-d*@)=umdr^krouu&xai(-)#(9^ywuvv2xs+#*9jgme*_8xk=y)'
@@ -41,7 +41,7 @@ SECRET_KEY = 'django-insecure-d*@)=umdr^krouu&xai(-)#(9^ywuvv2xs+#*9jgme*_8xk=y)
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-arir2001-projectfour-8itw6yp9p23.ws-eu115.gitpod.io'
+    '8000-arir2001-projectfour-e83ax3w80zz.ws-eu115.gitpod.io'
     ,'.herokuapp.com'
 ]
 
@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -62,6 +63,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'django_summernote',
+    'cloudinary',
     'home',
     'blog',
 ]
@@ -126,15 +128,21 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-'''
+
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+'''
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL", "sqlite:///db.sqlite3"))
+}
+
+
+
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",
     "https://*.herokuapp.com",
-    "https://8000-arir2001-projectfour-8itw6yp9p23.ws-eu115.gitpod.io"
-]
+    'https://*8000-arir2001-projectfour-e83ax3w80zz.ws-eu115.gitpod.io']
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
