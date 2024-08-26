@@ -11,10 +11,10 @@
             <div class="card-body">
                 <div class="image-container">
                     {% if "placeholder" in post.featured_image.url %}
-                    <img class="card-img-top" src="{% static 'images/default.jpg' %}"
+                    <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.png' %}"
                       alt="placeholder image">
                     {% else %}
-                    <img class="card-img-top" src=" {{ post.featured_image.url }}"
+                    <img class="card-img-top blogpostlist_image" src=" {{ post.featured_image.url }}"
                       alt="{{ post.title }}">
                     {% endif %}
                     <div class="image-flash">

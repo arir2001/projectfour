@@ -50,16 +50,16 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                        <a class="nav-link {% if request.path == home_url %}active" aria-current="page {% endif %}"
                             href="{% url 'home' %}">home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                        <a class="nav-link {% if request.path == home_url %}active" aria-current="page{% endif %}"
                             href="#">about <i>me</i></a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}" aria-current="page"
+                        <a class="nav-link {% if request.path == home_url %}active" aria-current="page{% endif %}"
                             href="#">about <i>you</i></a>
                     </li>
                     <div id="dropdowndiv">
@@ -68,7 +68,7 @@
                             content
                         </a>
                             <ul  class="dropdown-menu" aria-labelledby="navbarDropdown"> 
-                            <li><a class="dropdown-item nav-link {% if request.path == '/blog/' %}active{% endif %}" href="{% url 'blog' %}">Blog</a></li>
+                            <li><a class="dropdown-item nav-link {% if request.path == '/blog/' %}active" aria-current="page{% endif %}" href="{% url 'blog' %}">Blog</a></li>
                             <li><a class="dropdown-item" href="#">Podcast</a></li>
                             <li><a class="dropdown-item" href="#">YouTube</a></li>
                             <li><hr class="dropdown-divider"></li>

@@ -45,6 +45,7 @@ ALLOWED_HOSTS = [
     ,'.herokuapp.com'
 ]
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -83,8 +84,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'allauth.account.middleware.AccountMiddleware',
-
 ]
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
+}
 
 from django.contrib import messages
 MESSAGE_TAGS = {
