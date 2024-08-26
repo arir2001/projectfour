@@ -394,6 +394,11 @@ p a{
     background: #C20808;
 }
 
+.btn-approve {
+    color: #fff;
+    background: #C20808;
+}
+
 .btn-like:hover,
 .btn-like:active {
     color: #C20808;

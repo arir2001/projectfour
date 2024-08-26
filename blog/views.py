@@ -3,8 +3,10 @@ from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Post, Comment
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
 
 # Create your views here.
 # Post and comment models adapted from CodeInstitute Django Blog
@@ -28,8 +30,6 @@ def search_posts(request):
             })
     else:         
         return render(request, "blog/post_list.html", {})
-
-        
 
 def post_detail(request, slug):
 
@@ -75,7 +75,6 @@ def post_detail(request, slug):
         },
     )
 
-
 def comment_edit(request, slug, comment_id):
     """
     view to edit comments
@@ -98,19 +97,89 @@ def comment_edit(request, slug, comment_id):
 
     return HttpResponseRedirect(reverse('blogpost', args=[slug]))
 
-
-def comment_delete(request, slug, comment_id):
+#deletes the comments from suepruser or author 
+def comment_delete(request, comment_id, slug=None):
     """
     view to delete comment
     """
-    queryset = Post.objects.filter(status=1)
-    post = get_object_or_404(queryset, slug=slug)
     comment = get_object_or_404(Comment, pk=comment_id)
 
-    if comment.author == request.user:
+    referer_url = request.META.get('HTTP_REFERER', reverse('blogpost', args=[slug]))
+    
+    #request.user == comment.author or
+    if  request.user.is_superuser:
         comment.delete()
-        messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
+        messages.success(request, 'Comment deleted!')
     else:
         messages.add_message(request, messages.ERROR, 'You can only delete your own comments!')
+    
+    # Redirect back to the referring page or fallback to the blog post
+    return HttpResponseRedirect(referer_url)
 
-    return HttpResponseRedirect(reverse('blogpost', args=[slug]))
+#deletes the comments from suepruser or author 
+def comment_approve(request, comment_id):
+    """
+    view to approve comment in user admin
+    """
+    comment = get_object_or_404(Comment, pk=comment_id)
+
+    referer_url = request.META.get('HTTP_REFERER')
+
+    messages.success(request, request.user)
+
+    if request.user.is_superuser:
+        comment.approved = True
+        comment.save() #save to daata base 
+        messages.success(request, 'Comment approved!')
+    else:
+        messages.error(request, 'You cannot  approve your own comments!')
+    
+    # Redirect back to the referring page or fallback to the blog post
+    return HttpResponseRedirect(referer_url)
+
+
+#shows the comments
+def user_admin(request):
+    comments = Comment.objects.filter(approved=False)
+    #post = Post.objects.all()
+    return render(
+        request,
+        "blog/blogadmin.html",
+        {
+            "comments": comments,
+            #"post": post,
+        },
+    )
+
+def comments_admin(request):
+    comments = Comment.objects.filter(approved=False)
+    #post = Post.objects.all()
+    return render(
+        request,
+        "blog/commentadmin.html",
+        {
+            "comments": comments,
+            #"post": post,
+        },
+    )
+
+
+def create_or_update_post(request, post_id=None):
+    if not request.user.is_superuser:
+        return HttpResponseForbidden("You are not allowed to access this page.")
+
+    if post_id:
+        post = get_object_or_404(Post, id=post_id)
+        form = PostForm(instance=post)
+    else:
+        post = None
+        form = PostForm()
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Post saved successfully!')
+            return redirect('post_list')  #change to the correct view
+
+    return render(request, 'blog/post_form.html', {'form': form})

@@ -1,4 +1,9 @@
 const editButtons = document.getElementsByClassName("btn-edit");
+
+const approveButtons = document.getElementsByClassName("btn-approve");
+const approveConfirm = document.getElementById("approveConfirm");
+const approveModal = new bootstrap.Modal(document.getElementById("approveModal"));
+
 const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
 const submitButton = document.getElementById("submitButton");
@@ -46,7 +51,19 @@ for (let button of editButtons) {
 for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
       let commentId = e.target.getAttribute("comment_id");
+      console.log("this is the comment id", commentId)
       deleteConfirm.href = `delete_comment/${commentId}`;
       deleteModal.show();
+    });
+  }
+
+
+
+  for (let button of approveButtons) {
+    button.addEventListener("click", (e) => {
+      let commentId = e.target.getAttribute("comment_id");
+      console.log("this is the comment id", commentId)
+      approveConfirm.href = `approve_comment/${commentId}`;
+      approveModal.show();
     });
   }
