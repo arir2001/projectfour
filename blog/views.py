@@ -191,6 +191,8 @@ def create_or_update_post(request, slug=None):
         if form.is_valid():
             form.save()
             messages.success(request, 'Post saved successfully!')
-            return redirect('post_list')  #change to the correct view
+            return HttpResponseRedirect(reverse('admin'))  #change to the correct view back too admin dashboard
+        else:
+            messages.warning(request, 'Post not saved. Check form.')
 
     return render(request, 'blog/post_form.html', {'form': form})

@@ -12,4 +12,4 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title','slug', 'featured_image', 'excerpt', 'content', 'status', 'tags')
-        widgets = {'content': SummernoteWidget(),}  # Enable Summernote for the content field 
+        widgets = {'content': SummernoteWidget(), 'status': forms.RadioSelect() }  
