@@ -16,6 +16,7 @@ urlpatterns = [
     #admin URLs
     path('blog/user_admin/', views.user_admin, name='admin'),
     path('blog/user_admin/comments', views.comments_admin, name='comments_admin'),
+    path('blog/user_admin/comments/approve_comment/<int:comment_id>/', views.comment_approve, name='comment_approve_admin'),
     path('blog/user_admin/new_post/', views.create_or_update_post, name='create_post'),
-    path('blog/user_admin/<int:post_id>/edit/', views.create_or_update_post, name='edit_post'),
+    path('blog/user_admin/<slug:slug>/edit/', views.create_or_update_post, name='edit_post'),
 ]

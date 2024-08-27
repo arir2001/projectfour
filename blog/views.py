@@ -125,51 +125,62 @@ def comment_approve(request, comment_id):
 
     referer_url = request.META.get('HTTP_REFERER')
 
-    messages.success(request, request.user)
+    if comment.approved == False: 
+        if request.user.is_superuser:
+            comment.approved = True
+            comment.save() #save to daata base 
+            messages.success(request, 'Comment approved!')
+    elif comment.approved == True: 
+        if request.user.is_superuser:
+            comment.approved = False
+            comment.save() #save to daata base 
+            messages.success(request, 'Comment unapproved!')
 
-    if request.user.is_superuser:
-        comment.approved = True
-        comment.save() #save to daata base 
-        messages.success(request, 'Comment approved!')
-    else:
-        messages.error(request, 'You cannot  approve your own comments!')
-    
+        
     # Redirect back to the referring page or fallback to the blog post
     return HttpResponseRedirect(referer_url)
 
 
 #shows the comments
 def user_admin(request):
-    comments = Comment.objects.filter(approved=False)
-    #post = Post.objects.all()
+    posts = Post.objects.all()
+    unapproved_comments = Comment.objects.filter(approved=False)
+    approved_comments = Comment.objects.filter(approved=True)
+    comments = Comment.objects.all()
     return render(
         request,
-        "blog/blogadmin.html",
+        "blog/dashboard.html",
         {
+            "unapproved_comments": unapproved_comments,
+            "approved_comments": approved_comments,
             "comments": comments,
-            #"post": post,
+            "posts": posts,
         },
     )
 
 def comments_admin(request):
-    comments = Comment.objects.filter(approved=False)
+    unapproved_comments = Comment.objects.filter(approved=False)
+    approved_comments = Comment.objects.filter(approved=True)
+    comments = Comment.objects.all()
     #post = Post.objects.all()
     return render(
         request,
         "blog/commentadmin.html",
         {
+            "unapproved_comments": unapproved_comments,
+            "approved_comments": approved_comments,
             "comments": comments,
             #"post": post,
         },
     )
 
 
-def create_or_update_post(request, post_id=None):
+def create_or_update_post(request, slug=None):
     if not request.user.is_superuser:
         return HttpResponseForbidden("You are not allowed to access this page.")
 
-    if post_id:
-        post = get_object_or_404(Post, id=post_id)
+    if slug:
+        post = get_object_or_404(Post, slug=slug)
         form = PostForm(instance=post)
     else:
         post = None

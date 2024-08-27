@@ -3,6 +3,8 @@ const editButtons = document.getElementsByClassName("btn-edit");
 const approveButtons = document.getElementsByClassName("btn-approve");
 const approveConfirm = document.getElementById("approveConfirm");
 const approveModal = new bootstrap.Modal(document.getElementById("approveModal"));
+const approveModalLabel = document.getElementById("approveModalLabel");
+const modalBody = document.getElementById("modalbody-innertext");
 
 const commentText = document.getElementById("id_body");
 const commentForm = document.getElementById("commentForm");
@@ -61,9 +63,34 @@ for (let button of deleteButtons) {
 
   for (let button of approveButtons) {
     button.addEventListener("click", (e) => {
-      let commentId = e.target.getAttribute("comment_id");
-      console.log("this is the comment id", commentId)
-      approveConfirm.href = `approve_comment/${commentId}`;
-      approveModal.show();
+      let commentId = e.currentTarget.getAttribute("comment_id");
+      let commentapproved = e.currentTarget.getAttribute("comment_approved");
+      
+      console.log("this is the comment apr", commentapproved)
+      console.log("this is the comment apr", commentId)
+
+      if (commentapproved == "True"){
+        console.log("entered if statement");
+        console.log('approve confirm', approveConfirm);
+        console.log("modal body", modalBody);
+
+        approveConfirm.innerText = "Unapprove?";
+        modalBody.innerText = "Are you sure you wish to unapprove this comment?";
+        approveModalLabel.innerText = "Unapprove this comment?";
+
+        approveConfirm.href = `approve_comment/${commentId}`;
+        approveModal.show();
+      }else{
+        console.log("entered else");
+        console.log('approve confirm', approveConfirm);
+        console.log("modal body", modalBody);
+
+        approveConfirm.innerText = "Approve?";
+        modalBody.innerText = "Are you sure you wish to approve this comment?";
+        approveModalLabel.innerText = "Approve this comment?";
+
+        approveConfirm.href = `approve_comment/${commentId}`;
+        approveModal.show();
+      }
     });
-  }
+};

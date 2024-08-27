@@ -68,3 +68,11 @@ window.onload = function() {
 };
 
 
+/* for the side bar 
+
+from : 
+https://mdbootstrap.com/docs/standard/extended/sidebar-menu-collapse/
+
+*/
+// Initialization for ES Users
+$('.collapse').collapse()

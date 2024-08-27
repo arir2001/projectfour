@@ -429,3 +429,9 @@ p a{
     position: relative; /* Ensure correct stacking context */
 }
 
+
+.blogpostdivadmin{
+    overflow-y: auto;
+    height: 70vh;
+    border: solid grey;
+}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebar" class="col-md-2 d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <div class="border border-dark p-2 m-2">
+                    <h1> welcome back {{ user.username }}</h1>
+                </div>
+                <ul class="nav flex-column">
+                    <!-- Dashboard Link -->
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'admin' %}">
+                            <i class="fas fa-tachometer-alt"></i>
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <!-- Blog Posts Link -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="">
+                            <i class="fas fa-blog"></i>
+                            Manage Blog Posts
+                        </a>
+                    </li>
+
+                    <!-- Create Blog Post Link -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{%url 'create_post' % }">
+                            <i class="fas fa-plus"></i>
+                            Create Blog Post
+                        </a>
+                    </li>
+
+                    <!-- Manage Comments Link -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'comments_admin' %}">
+                            <i class="fas fa-comments"></i>
+                            Manage Comments
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Sidebar -->
+
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-4">
+            {% block blog_content %}
+            <!-- Content Goes Here -->
+            {% endblock %}
+        </main>
+    </div>
+</div>
+{% endblock %}
