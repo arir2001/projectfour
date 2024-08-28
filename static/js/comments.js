@@ -61,36 +61,36 @@ for (let button of deleteButtons) {
 
 
 
-  for (let button of approveButtons) {
-    button.addEventListener("click", (e) => {
-      let commentId = e.currentTarget.getAttribute("comment_id");
-      let commentapproved = e.currentTarget.getAttribute("comment_approved");
-      
-      console.log("this is the comment apr", commentapproved)
-      console.log("this is the comment apr", commentId)
+for (let button of approveButtons) {
+  button.addEventListener("click", (e) => {
+    let commentId = e.currentTarget.getAttribute("comment_id");
+    let commentapproved = e.currentTarget.getAttribute("comment_approved");
+    
+    console.log("this is the comment apr", commentapproved)
+    console.log("this is the comment apr", commentId)
 
-      if (commentapproved == "True"){
-        console.log("entered if statement");
-        console.log('approve confirm', approveConfirm);
-        console.log("modal body", modalBody);
+    if (commentapproved == "True"){
+      console.log("entered if statement");
+      console.log('approve confirm', approveConfirm);
+      console.log("modal body", modalBody);
 
-        approveConfirm.innerText = "Unapprove?";
-        modalBody.innerText = "Are you sure you wish to unapprove this comment?";
-        approveModalLabel.innerText = "Unapprove this comment?";
+      approveConfirm.innerText = "Unapprove?";
+      modalBody.innerText = "Are you sure you wish to unapprove this comment?";
+      approveModalLabel.innerText = "Unapprove this comment?";
 
-        approveConfirm.href = `approve_comment/${commentId}`;
-        approveModal.show();
-      }else{
-        console.log("entered else");
-        console.log('approve confirm', approveConfirm);
-        console.log("modal body", modalBody);
+      approveConfirm.href = `approve_comment/${commentId}`;
+      approveModal.show();
+    }else{
+      console.log("entered else");
+      console.log('approve confirm', approveConfirm);
+      console.log("modal body", modalBody);
 
-        approveConfirm.innerText = "Approve?";
-        modalBody.innerText = "Are you sure you wish to approve this comment?";
-        approveModalLabel.innerText = "Approve this comment?";
+      approveConfirm.innerText = "Approve?";
+      modalBody.innerText = "Are you sure you wish to approve this comment?";
+      approveModalLabel.innerText = "Approve this comment?";
 
-        approveConfirm.href = `approve_comment/${commentId}`;
-        approveModal.show();
-      }
-    });
+      approveConfirm.href = `approve_comment/${commentId}`;
+      approveModal.show();
+    }
+  });
 };

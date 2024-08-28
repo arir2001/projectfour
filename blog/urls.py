@@ -15,8 +15,14 @@ urlpatterns = [
 
     #admin URLs
     path('blog/user_admin/', views.user_admin, name='admin'),
+    #comment admin URLs
     path('blog/user_admin/comments', views.comments_admin, name='comments_admin'),
     path('blog/user_admin/comments/approve_comment/<int:comment_id>/', views.comment_approve, name='comment_approve_admin'),
+    #post admin URLs
+    path('blog/user_admin/blogpostadmin/draft_post/<slug:slug>', views.blog_publish_admin, name='post_unpublish_admin'),
+    path('blog/user_admin/blogpostadmin/publish_post/<slug:slug>', views.blog_publish_admin, name='post_publish_admin'),
+
     path('blog/user_admin/new_post/', views.create_or_update_post, name='create_post'),
     path('blog/user_admin/<slug:slug>/edit/', views.create_or_update_post, name='edit_post'),
+    path('blog/user_admin/blogpostadmin/', views.blogposts_admin, name='manage_posts'),
 ]

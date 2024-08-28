@@ -1,0 +1,100 @@
+{% extends "blog/blogadmin_base.html" %}
+{% load static %}
+{% block blog_content %}
+<div class="container">
+    <h1>Post List</h1>
+    <table class="table table-striped" id="postTable">
+        <thead>
+            <tr>
+                <th>Post Title</th>
+                <th>Slug</th>
+                <th>Created On</th>
+                <th>Published</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for post in posts%}
+            <tr>
+              <td>{{ post.title }}</td>
+              <td>{{ post.slug }}</td>
+              <td>{{ post.created_on }}</td>
+              <td> {{post.get_status_display }} </td>
+              <td> 
+                  <button class="btn btn-publish m-2" post_id="{{ post.slug }}" post_status="{{ post.status }}">
+                      {% if post.status == 1 %}
+                          Unpublish
+                      {% else %}
+                          Publish
+                      {% endif %}
+                  </button>
+                  <button class="btn btn-delete m-2" post-id="{{ post.id }}">Delete</button>
+                  <a href="{% url 'edit_post' post.slug %}" class=" btn btn-edit">Edit</a>
+              </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No posts found.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="deletePostModal" tabindex="-1"
+  aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"
+          id="deleteModalLabel">Delete post?</h5>
+        <button type="button" class="btn-close"
+          data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete this post?
+        This action cannot be undone.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+          data-bs-dismiss="modal">Close</button>
+        <a id="deleteConfirm" href="#" class="btn
+          btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="publishModal" tabindex="-1"
+  aria-labelledby="publishModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"
+            id="publishModalLabel">Publish post?</h5>
+          <button type="button" class="btn-close"
+            data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="modalbody-innertext">Are you sure you want to publish this post?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"
+            data-bs-dismiss="modal">Close</button>
+          <a id="publishConfirm" href="#" class="btn
+            btn-danger">Publish</a>
+        </div>
+    </div>
+  </div>
+</div>
+{% endblock blog_content %}
+{% block extras %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<!-- Include jQuery from: https://datatables.net/-->
+<script src="{% static 'js/blog.js' %}"></script>
+<script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+
+{% endblock %}
+

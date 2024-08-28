@@ -5,7 +5,7 @@ from taggit.managers import TaggableManager
 
 # Post and comment models adapted from CodeInstitute Django Blog
 
-STATUS = ((0, "Draft"), (1, "Published"), (2, "Archived"))
+STATUS = ((0, "Draft"), (1, "Published"))
 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)

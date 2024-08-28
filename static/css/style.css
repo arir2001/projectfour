@@ -389,15 +389,12 @@ p a{
     color: pink;
 }
 
-.btn-delete {
+.btn-delete,
+.btn-approve, .btn-publish, btn-edit {
     color: #fff;
     background: #C20808;
 }
 
-.btn-approve {
-    color: #fff;
-    background: #C20808;
-}
 
 .btn-like:hover,
 .btn-like:active {

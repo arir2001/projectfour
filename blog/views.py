@@ -140,7 +140,6 @@ def comment_approve(request, comment_id):
     # Redirect back to the referring page or fallback to the blog post
     return HttpResponseRedirect(referer_url)
 
-
 #shows the comments
 def user_admin(request):
     posts = Post.objects.all()
@@ -162,7 +161,6 @@ def comments_admin(request):
     unapproved_comments = Comment.objects.filter(approved=False)
     approved_comments = Comment.objects.filter(approved=True)
     comments = Comment.objects.all()
-    #post = Post.objects.all()
     return render(
         request,
         "blog/commentadmin.html",
@@ -170,10 +168,7 @@ def comments_admin(request):
             "unapproved_comments": unapproved_comments,
             "approved_comments": approved_comments,
             "comments": comments,
-            #"post": post,
-        },
-    )
-
+        },)
 
 def create_or_update_post(request, slug=None):
     if not request.user.is_superuser:
@@ -189,10 +184,42 @@ def create_or_update_post(request, slug=None):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.author = request.user  # Set the author to the logged-in user
+            post.save()
             messages.success(request, 'Post saved successfully!')
-            return HttpResponseRedirect(reverse('admin'))  #change to the correct view back too admin dashboard
+            return redirect('blogpost',  slug=post.slug)  #change to the correct view back too admin dashboard
         else:
             messages.warning(request, 'Post not saved. Check form.')
 
     return render(request, 'blog/post_form.html', {'form': form})
+
+def blogposts_admin(request):
+    posts = Post.objects.all()
+    return render(
+        request,
+        "blog/blogpostadmin.html",
+        {"posts": posts,},)
+
+def blog_publish_admin(request, slug):
+    """
+    view to approve comment in user admin
+    """
+
+    post = get_object_or_404(Post, slug=slug)
+
+    referer_url = request.META.get('HTTP_REFERER', '/blog/user_admin/')  # Provide a fallback URL
+
+    # Toggle post status based on the current value
+    if request.user.is_superuser:
+        if post.status == 0:
+            post.status = 1
+            post.save()  # Save changes to the database
+            messages.success(request, 'Post published!')
+        elif post.status == 1:
+            post.status = 0
+            post.save()  # Save changes to the database
+            messages.success(request, 'Post unpublished!')
+
+    # Redirect back to the referring page or fallback to the blog post admin
+    return HttpResponseRedirect(referer_url)

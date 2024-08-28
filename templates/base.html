@@ -22,10 +22,11 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    
+    <!-- dataTable CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
+  
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
 </head>
 
 <body class="d-flex flex-column h-100 main-bg">
@@ -62,31 +63,20 @@
                         <a class="nav-link {% if request.path == home_url %}active" aria-current="page{% endif %}"
                             href="#">about <i>you</i></a>
                     </li>
-                    <div id="dropdowndiv">
                     <li class="nav-item">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            content
-                        </a>
-                            <ul  class="dropdown-menu" aria-labelledby="navbarDropdown"> 
-                            <li><a class="dropdown-item nav-link {% if request.path == '/blog/' %}active" aria-current="page{% endif %}" href="{% url 'blog' %}">Blog</a></li>
-                            <li><a class="dropdown-item" href="#">Podcast</a></li>
-                            <li><a class="dropdown-item" href="#">YouTube</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">LinkedIn</a></li>
-                        </ul>
+                        <a class="nav-link {% if request.path == '/blog/' %}active" aria-current="page{% endif %}" href="{% url 'blog' %}">blog</a></a>
                     </li>
-                    </div>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">Logout</a>
+                        <a class="nav-link {% if request.path == logout_url %}active{% endif %}" aria-current="page" href="{% url 'account_logout' %}">LOGOUT</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == signup_url %}active{% endif %}" aria-current="page"
-                            href="{% url 'account_signup' %}">Register</a>
+                            href="{% url 'account_signup' %}">REGISTER</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">Login</a>
+                        <a class="nav-link {% if request.path == login_url %}active{% endif %}" aria-current="page" href="{% url 'account_login' %}">LOGIN</a>
                     </li>
                     {% endif %}
                     {% if user.is_superuser %}
@@ -97,7 +87,6 @@
                 </ul>
             </div>
         </div>
-
     </nav>
 
     <main class="flex-shrink-0 main-bg">
