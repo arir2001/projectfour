@@ -223,3 +223,18 @@ def blog_publish_admin(request, slug):
 
     # Redirect back to the referring page or fallback to the blog post admin
     return HttpResponseRedirect(referer_url)
+
+def post_delete(request, slug):
+    """
+    view to delete comment
+    """
+    post = get_object_or_404(Post, slug=slug)
+
+    referer_url = request.META.get('HTTP_REFERER', '/blog/user_admin/')  # Provide a fallback URL
+
+    #request.user == comment.author or
+    post.delete()
+    messages.success(request, 'Post deleted!')
+
+    # Redirect back to the referring page or fallback to the blog post
+    return HttpResponseRedirect(referer_url)

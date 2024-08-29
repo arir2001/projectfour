@@ -21,15 +21,17 @@
               <td>{{ post.created_on }}</td>
               <td> {{post.get_status_display }} </td>
               <td> 
-                  <button class="btn btn-publish m-2" post_id="{{ post.slug }}" post_status="{{ post.status }}">
-                      {% if post.status == 1 %}
-                          Unpublish
-                      {% else %}
-                          Publish
-                      {% endif %}
+                <div class="col d-flex flex-column-reverse align-items-stretch ">
+                  <button class="btn btn-publish m-1" post_id="{{ post.slug }}" post_status="{{ post.status }}">
+                    {% if post.status == 1 %}
+                        Unpublish
+                    {% else %}
+                        Publish
+                    {% endif %}
                   </button>
-                  <button class="btn btn-delete m-2" post-id="{{ post.id }}">Delete</button>
-                  <a href="{% url 'edit_post' post.slug %}" class=" btn btn-edit">Edit</a>
+                  <button class="btn btn-delete m-1" post-id="{{ post.slug }}">Delete</button>
+                  <a href="{% url 'edit_post' post.slug %}" class="m-1 btn btn-edit">Edit</a>
+                </div>
               </td>
                 </tr>
             {% empty %}
@@ -91,10 +93,12 @@
 </div>
 {% endblock blog_content %}
 {% block extras %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <!-- Include jQuery from: https://datatables.net/-->
-<script src="{% static 'js/blog.js' %}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 <script src="https://cdn.datatables.net/2.1.4/js/dataTables.js"></script>
+
+<script src="{% static 'js/blog.js' %}"></script>
 
 {% endblock %}
 

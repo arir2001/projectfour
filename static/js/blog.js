@@ -33,20 +33,47 @@ for (let button of publishButtons) {
   });
 };
 
+const deleteModal = new bootstrap.Modal(document.getElementById("deletePostModal"));
+const deleteButtons = document.getElementsByClassName("btn-delete");
+const deleteConfirm = document.getElementById("deleteConfirm");
+
+for (let button of deleteButtons) {
+  button.addEventListener("click", (e) => {
+    let postId = e.target.getAttribute("post_id");
+    console.log("this is the comment id", postId)
+    deleteConfirm.href = `delete_post/${postId}`;
+    deleteModal.show();
+  });
+}
+
 $(document).ready(function() {
-  $('#postTable').DataTable();
-  columnDefs: [
-    {
+  $('#postTable').DataTable({
+    columnDefs: [
+      {
+        targets: '_all', // apply searchability to all columns
+        searchable: true 
+      },
+      {
         targets: [0],
-        orderData: [0, 1]
-    },
-    {
+        orderData: [0, 2]
+      },
+      {
         targets: [1],
-        orderData: [1, 0]
-    },
-    {
+        orderData: [1, 3]
+      },
+      {
+        targets: [2],
+        orderData: [2, 3]
+      },
+      {
+        targets: [3],
+        orderData: [3, 0]
+      },
+      {
         targets: [4],
-        orderData: [4, 0]
-    }
-]
+        orderable: false, // disable sorting, search for the button column (index 4)
+        searchable: false 
+      }
+    ]
+  });
 });

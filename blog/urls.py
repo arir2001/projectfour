@@ -21,6 +21,8 @@ urlpatterns = [
     #post admin URLs
     path('blog/user_admin/blogpostadmin/draft_post/<slug:slug>', views.blog_publish_admin, name='post_unpublish_admin'),
     path('blog/user_admin/blogpostadmin/publish_post/<slug:slug>', views.blog_publish_admin, name='post_publish_admin'),
+    path('blog/user_admin/blogpostadmin/delete_post/<slug:slug>', views.post_delete, name='delete_post'),
+
 
     path('blog/user_admin/new_post/', views.create_or_update_post, name='create_post'),
     path('blog/user_admin/<slug:slug>/edit/', views.create_or_update_post, name='edit_post'),
