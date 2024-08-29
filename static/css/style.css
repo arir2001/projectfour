@@ -96,24 +96,16 @@ body{
 
 /*coach intro*/
 
-#coachdescription{
-
-}
-
-.coachintrodiv{
-    margin: 4%;
-    padding: 2%;
+.browncolor{
     color: #3F0404;
 }
 
-#coachintro{
-    font-size: 2rem;
+.buttonbrowncolor{
+    color: #712222
 }
+
 
 .coachdescriptiondiv{
-    margin: 4%;
-    padding: 2%;
-    color: #3F0404;
     background-color: #FDF0D5;
 }
 
@@ -129,49 +121,41 @@ p a{
 /* services*/
 
 .coachingservicesdiv{
-    background: linear-gradient(#003049, #CDDEE9);
+    background: linear-gradient(20deg, #003049, #CDDEE9);
     color: white;
-    font-size: 1rem;
-    padding: 2%;
 }
 
-.coachingservicesinnerdiv{
-    padding: 4%;
+.coachingservicesdiv:hover {
+    transition: background 0.5s ease; /* Change 0.5s to any shorter duration */
 }
+
 
 .servicesbutton{
     color: #712222;
     border-color: #669BBC;
-    font-size: 1.5rem;
     background-color: #669BBC;
 }
 
-.btn-outline-primary:active {
-    color: #fff;
-    background-color: #669BBC;
-    margin: 2%;
+.btn-lg{
+    font-size: 2rem;
 }
 
-.btn-outline-primary:hover {
+.servicesbutton:active {
     color: #fff;
     background-color: #669BBC;
 }
 
-.title{
+.servicesbutton:hover {
+    color: #fff;
+    background-color: #669BBC;
+}
+
+.bluecolor{
     color:#1079BA;
-    text-align: center;
-}
-
-.clientdiv{
-    padding: 5%;
 }
 
 .testimonialdiv{
     background-color: #669bbc54;
-    border-radius: 25px;
-    padding: 10%;
-    height: 50%;
-    width: 90%;
     margin: 5%;
     flex: 1; /* ensures the containers are equal height */
     min-height: 300px;
@@ -187,32 +171,13 @@ p a{
 
 .service{
     background-color: #0030494a;
-    border: solid;
-    border-radius: 25px;
-    height: 50%;
-    width: 90%;
-    margin: 5%;
-    padding: 5%;
     text-align: center;
 }
 
-/* conent section */ 
+/* conetnt section */ 
 
-.embedded{
-    margin: 2%;
-    flex-grow: 1;
-}
-
-.embeddedcomment{
-    padding: 2%;
-    text-align: center;
-    margin: 2%;
-}
 
 .blog_post_tease{
-    padding: 5%;
-    margin: 5%;
-    border-radius: 10%;
     background-color: grey;
 }
 
@@ -221,6 +186,21 @@ p a{
     text-decoration: none;
 }
 
+.video{
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+}
+
+.video-wrapper{
+    position: relative; 
+    width: 100%; 
+    padding-bottom: 56.25%; 
+    height: 0; 
+    overflow: hidden;
+}
 /* inquiry CSS */
 .messages{
     
