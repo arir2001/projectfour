@@ -45,7 +45,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # directory where media files will
 SECRET_KEY = 'django-insecure-d*@)=umdr^krouu&xai(-)#(9^ywuvv2xs+#*9jgme*_8xk=y)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '8000-arir2001-projectfour-e83ax3w80zz.ws-eu115.gitpod.io'
@@ -139,6 +139,7 @@ WSGI_APPLICATION = 'coaching.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
+
 if 'test' in sys.argv:
     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
@@ -183,6 +184,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
