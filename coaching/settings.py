@@ -22,7 +22,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = os.environ.get("SECRET_KEY", 'your-secret-key')
 
 # Debug settings
-DEBUG = os.environ.get("DEBUG", "False") == "True"
+DEBUG = True
 
 # Allowed hosts
 ALLOWED_HOSTS = [
