@@ -1,3 +1,2 @@
 web: gunicorn coaching.wsgi
-
-web: gunicorn projectfour.wsgi --log-file -
+web: gunicorn coaching.wsgi --log-file -
