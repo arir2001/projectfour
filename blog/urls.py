@@ -8,7 +8,7 @@ urlpatterns = [
     path('search_posts/', views.search_posts, name='search-posts'),
     
     #comment edit and delete comments urls
-    path('<slug:slug>/edit_comment/<int:comment_id>/', views.comment_edit, name='comment_edit'),
+    path('<slug:slug>/edit_comment/<int:comment_id>', views.comment_edit, name='comment_edit'),
     path('<slug:slug>/delete_comment/<int:comment_id>/', views.comment_delete, name='comment_delete'),
     path('blog/user_admin/delete_comment/<int:comment_id>/', views.comment_delete, name='comment_delete_admin'),
     path('blog/user_admin/approve_comment/<int:comment_id>/', views.comment_approve, name='comment_approve_admin'),

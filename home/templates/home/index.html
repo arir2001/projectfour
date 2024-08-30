@@ -91,17 +91,17 @@
                     </div>
                 </div>
                 <div class="row handwriting m-4 text-center d-flex align-items-stretch justify-content-center">
-                    <div class="col-md-4 ">
-                        <div class="servicesbutton rounded-pill">
+                    <div class="col-md-4 d-none ">
+                        <div class="servicesbutton m-2 rounded-pill">
                             <a href="inquiry.html" class="buttonbrowncolor btn btn-lg m-2" >more about me</a>
                         </div>
                         
                     </div>
-                    <div class="col-md-4 ">
-                        <div class="servicesbutton rounded-pill"><a href="inquiry.html" class="buttonbrowncolor btn btn-lg m-2" >all my services</a></div>
+                    <div class="col-md-4 d-none">
+                        <div class="servicesbutton  m-2 rounded-pill"><a href="inquiry.html" class="buttonbrowncolor btn btn-lg m-2" >all my services</a></div>
                     </div>
                     <div class="col-md-4 ">
-                        <div class="servicesbutton rounded-pill"><a href="inquiry.html" class="buttonbrowncolor btn btn-lg m-2" >inquire</a></div>
+                        <div class="servicesbutton  m-2 rounded-pill"><a href="inquiry.html" class="buttonbrowncolor btn btn-lg m-2" >inquire</a></div>
                     </div>
                 </div>
                 
@@ -149,29 +149,51 @@
                 </div>
             </div>
         </div>
-        <div class="row d-flex mt-2 p-2 ">
-            <div class="col libre-baskerville-regular">
-                <h1 class='m-2 d-none d-md-block text-center'> Read my most recent blog post: </h1>
-                <div class="col-md-6 ">
-                    {% get_recent_blog_posts as recent_posts %}
-                    {% for post in recent_posts %}
-                    <div class="rounded-pill blog_post_tease m-2 p-2">
-                        <div class="col d-flex flex-column align-items-center mt-3">
-                            <div class="row"><h1> {{post.title}}</h1></div>
-                            <div class="row"><p>{{ post.excerpt }}</p></div>
-                            <div class="row">
-                                <a href="{% url 'blogpost' post.slug %}">..... read more -></a>
+        <div class="row">
+
+            <div class="col-md-6 text-center d-flex flex-column justify-content-center">
+                <h1>Read my most recent blog post! </h1>
+                <h2>Or view my other posts <a  href="{% url 'blog' %}" class="text-decoration-none text-muted">here</a> </h2>
+            </div>
+
+            <div class="col-md-6 d-flex text-center align-items-center justify-content-center">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        {% get_recent_blog_posts as recent_posts %}
+                        {% for post in recent_posts %}
+                        <div class="image-container">
+                            {% if "placeholder" in post.featured_image.url %}
+                            <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.png' %}"
+                              alt="placeholder image">
+                            {% else %}
+                            <img class="card-img-top blogpostlist_image" src=" {{ post.featured_image.url }}"
+                              alt="{{ post.title }}">
+                            {% endif %}
+                            <div class="image-flash">
+                                <h2 class="author">Author: {{ post.author }}</h2>
+                                <div class=" d-none fill img-fluid">
+                                    {% if post.mastimage %}
+                                    <img class='blogpostlist_image' src="{{ post.mastimage.url }}" alt="Mast Image">
+                                    {% else %}
+                                    <img class='blogpostlist_image' src="{% static 'images/whiteboard.png' %}" alt="Mast Image">
+                                    {% endif %}
+                                </div>
                             </div>
                         </div>
+                        <a href="{% url 'blogpost' post.slug %}" class="post-link">
+                            <h4 class="card-title">{{ post.title }}</h4>
+                            <p class="card-text"> {{ post.excerpt |truncatewords:20|slice:":-1" }}.. <strong>read more</strong> </p>
+                        </a>
+                        <hr />
+                        <p class="card-text text-muted h6">{{ post.created_on}}</p>
+                        {% endfor %}
                     </div>
-                    
-                    {% endfor %}
                 </div>
-                
             </div>
-        </div>
             
+
         </div>
+        
     </section>
 </body>
 </html>

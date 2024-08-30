@@ -7,7 +7,6 @@ class CollaborateForm(forms.ModelForm):
         model = CollaborateRequest
         fields = ('name', 'service', 'email', 'message',)
         widgets = {
-            'service': forms.Select(),  #default widget will work fine here
+            'service': forms.Select(), 
         }
-
 

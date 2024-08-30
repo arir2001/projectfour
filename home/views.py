@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from home.models import Testimonial, CollaborateRequest, Inquire
 from .forms import CollaborateForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 # Home view that lists published testimonials
 def home(request):
@@ -23,3 +24,24 @@ def inquiry(request):
     {'collaborate_form': collaborate_form,
         'inquire': inquire
     })
+
+
+@login_required
+def inquiry_list(request):
+    inquiries = CollaborateRequest.objects.filter(read=False)
+    archived_inquiries = CollaborateRequest.objects.filter(read=True)
+    return render(request, 'home/inquiryadminlist.html', 
+    {'inquiries': inquiries,
+     "archived_inquiries" : archived_inquiries})
+
+def archive_inquiry(request, inquiry_id):
+    inquiry = get_object_or_404(CollaborateRequest, pk=inquiry_id)
+    inquiry.read = True
+    inquiry.save()
+    return redirect('inquiry_list')
+
+def un_archive_inquiry(request, inquiry_id):
+    inquiry = get_object_or_404(CollaborateRequest, pk=inquiry_id)
+    inquiry.read = False
+    inquiry.save()
+    return redirect('inquiry_list')
