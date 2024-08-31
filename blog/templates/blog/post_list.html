@@ -9,24 +9,23 @@
     <div class="col-md-4">
         <div class="card mb-4">
             <div class="card-body">
-                <div class="image-container">
-                    {% if "placeholder" in post.featured_image.url %}
-                    <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.png' %}"
-                      alt="placeholder image">
-                    {% else %}
-                    <img class="card-img-top blogpostlist_image" src=" {{ post.featured_image.url }}"
-                      alt="{{ post.title }}">
-                    {% endif %}
-                    <div class="image-flash">
-                        <h2 class="author">Author: {{ post.author }}</h2>
-                    </div>
-                </div>
                 <a href="{% url 'blogpost' post.slug %}" class="post-link">
-                    <h4 class="card-title">{{ post.title }}</h4>
+                    <div class="image-container">
+                        {% if "placeholder" in post.featured_image.url %}
+                        <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.png' %}"
+                        alt="placeholder image">
+                        {% else %}
+                        <img class="card-img-top blogpostlist_image" src=" {{ post.featured_image.url }}"
+                        alt="{{ post.title }}">
+                        {% endif %}
+                        <div class="image-flash">
+                            <h2 class="author">{{ post.title }}</h2>
+                        </div>
+                    </div>
                     <p class="card-text"> {{ post.excerpt |truncatewords:20|slice:":-1" }}.. <strong>read more</strong> </p>
+                    <hr/>
+                    <p class="card-text text-muted h6">{{ post.created_on}}</p>
                 </a>
-                <hr />
-                <p class="card-text text-muted h6">{{ post.created_on}}</p>
             </div>
         </div>
     </div>

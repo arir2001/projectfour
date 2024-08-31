@@ -4,8 +4,9 @@ from . import views
 urlpatterns = [
     #blog and posts URLs
     path('blog/', views.PostList.as_view(), name='blog'),
-    path('<slug:slug>/', views.post_detail, name='blogpost'),
     path('search_posts/', views.search_posts, name='search-posts'),
+    path('<slug:slug>/', views.post_detail, name='blogpost'),
+    
     
     #comment edit and delete comments urls
     path('<slug:slug>/edit_comment/<int:comment_id>', views.comment_edit, name='comment_edit'),
@@ -22,7 +23,6 @@ urlpatterns = [
     path('blog/user_admin/blogpostadmin/draft_post/<slug:slug>', views.blog_publish_admin, name='post_unpublish_admin'),
     path('blog/user_admin/blogpostadmin/publish_post/<slug:slug>', views.blog_publish_admin, name='post_publish_admin'),
     path('blog/user_admin/blogpostadmin/delete_post/<slug:slug>', views.post_delete, name='delete_post'),
-
 
     path('blog/user_admin/new_post/', views.create_or_update_post, name='create_post'),
     path('blog/user_admin/<slug:slug>/edit/', views.create_or_update_post, name='edit_post'),

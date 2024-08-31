@@ -161,7 +161,7 @@
                     <div class="card-body">
                         {% get_recent_blog_posts as recent_posts %}
                         {% for post in recent_posts %}
-                        <div class="image-container">
+                        <div class="d-flex">
                             {% if "placeholder" in post.featured_image.url %}
                             <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.png' %}"
                               alt="placeholder image">
@@ -170,18 +170,10 @@
                               alt="{{ post.title }}">
                             {% endif %}
                             <div class="image-flash">
-                                <h2 class="author">Author: {{ post.author }}</h2>
-                                <div class=" d-none fill img-fluid">
-                                    {% if post.mastimage %}
-                                    <img class='blogpostlist_image' src="{{ post.mastimage.url }}" alt="Mast Image">
-                                    {% else %}
-                                    <img class='blogpostlist_image' src="{% static 'images/whiteboard.png' %}" alt="Mast Image">
-                                    {% endif %}
-                                </div>
+                                <h1 class=" text-white">{{ post.title }}</h1>
                             </div>
                         </div>
                         <a href="{% url 'blogpost' post.slug %}" class="post-link">
-                            <h4 class="card-title">{{ post.title }}</h4>
                             <p class="card-text"> {{ post.excerpt |truncatewords:20|slice:":-1" }}.. <strong>read more</strong> </p>
                         </a>
                         <hr />

@@ -54,17 +54,8 @@
                         <a class="nav-link {% if request.path == home_url %}active" aria-current="page {% endif %}"
                             href="{% url 'home' %}">home</a>
                     </li>
-                    <li class="nav-item d-none">
-                        <a class="nav-link {% if request.path == home_url %}active" aria-current="page{% endif %}"
-                            href="#">about <i>me</i></a>
-                    </li>
-                    
-                    <li class="nav-item d-none">
-                        <a class="nav-link {% if request.path == home_url %}active" aria-current="page{% endif %}"
-                            href="#">about <i>you</i></a>
-                    </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == inquiry.html %}active" aria-current="page{% endif %}"
+                        <a class="nav-link {% if request.path == inquiry %}active" aria-current="page{% endif %}"
                             href="{% url 'inquiry' %}">inquire </a>
                     </li>
                     <li class="nav-item">
@@ -112,12 +103,24 @@
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 ">
-        <p class="m-0 text-center text-white">Made by Anna Marie Rooney</p>
-        <p class="m-0 text-center text-white">Follow: 
-            <i class="fab fa-twitter-square ms-3"></i>
-            <i class="fab fa-instagram-square ms-3"></i>
-            <i class="fab fa-youtube-square ms-3"></i>
-        </p>
+        <div class="row d-flex justify-content-around">
+            <div class="col-3 text-center">
+                <p class="m-0">Interested in working together?</p>
+                <p class="m-0"><a class="m-0 text-center text-decoration-none text-white"href="{% url 'inquiry' %}">Inquire <strong>here</strong></a></p>
+            </div>
+            <div class="col-3 text-center">
+                <p class="m-0 text-center text-white">Follow me: 
+                    <a href="https://www.twitter.com/" target="_blank" class="text-decoration-none text-white"><i class="fab fa-twitter-square ms-3"></i></a>
+                    <a href="https://www.instagram.com/" target="_blank" class="text-decoration-none text-white"><i class="fab fa-instagram-square ms-3"></i></a>
+                    <a href="https://www.youtube.com/" target="_blank" class="text-decoration-none text-white"><i class="fab fa-youtube-square ms-3"></i></a>  
+                </p>
+            </div>
+            <div class="col-3 text-center">
+                <p class="m-0 text-right text-muted">Website created by Anna Marie Rooney</p>
+                <p class="m-0 text-right text-muted" >Follow her github: 
+                    <a href="https://github.com/arir2001" target="_blank" class="text-decoration-none text-muted"><i class="fab fa-github"></i></a></p>
+            </div>
+        </div>
     </footer>
 
     <!-- boostrap script -->

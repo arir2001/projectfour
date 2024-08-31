@@ -13,21 +13,28 @@ class PostList(generic.ListView):
     template_name = 'blog/post_list.html'
     paginate_by = 6
 
+
 def search_posts(request):
     queryset = Post.objects.filter(status=1)
+    
     if request.method == "POST":
-        searched = request.POST.get('searched', '')
-        titles = queryset.filter(title__icontains=searched)
-        return 
-
-        render(
+        searched = request.POST.get('searched', '').strip()
+        if searched:
+            titles = queryset.filter(title__icontains=searched)
+        else:
+            titles = queryset.none()  
+        
+        return render(
             request, 
             "blog/search_posts.html", 
-            {'searched': searched,
-            'titles': titles,
-            })
+            {
+                'searched': searched,
+                'titles': titles,
+            }
+        )
     else:         
-        return render(request, "blog/post_list.html", {})
+        return render(request, "blog/post_list.html")
+
 
 def post_detail(request, slug):
 

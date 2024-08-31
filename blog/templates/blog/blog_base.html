@@ -9,7 +9,7 @@
             <form method="POST" action="{% url 'search-posts' %}">
                 {% csrf_token %}
                 <div class="col d-flex justify-content-space-evenly align-items-center">
-                    <input class="form-control mr-sm-2" type="text" name="searched" value="{{ search_term }}" placeholder="Search by title or tags..." class="form-control">
+                    <input class="form-control mr-sm-2" type="text" name="searched" value="{{ search_term }}" placeholder="Search by title.." class="form-control">
                     <button type="submit" class="btn btn-primary">Search</button>
                 </div>
             </form>

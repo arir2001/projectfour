@@ -66,3 +66,13 @@ window.onload = function() {
   /*start the timer for the first time on page load.*/
   startTimer();
 };
+
+
+/* for the side bar 
+
+from : 
+https://mdbootstrap.com/docs/standard/extended/sidebar-menu-collapse/
+
+*/
+// Initialization for ES Users
+$('.collapse').collapse()
