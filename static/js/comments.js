@@ -52,12 +52,12 @@ for (let button of editButtons) {
 */
 for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
-      let commentId = e.target.getAttribute("comment_id");
-      console.log("this is the comment id", commentId)
-      deleteConfirm.href = `delete_comment/${commentId}`;
-      deleteModal.show();
+    let commentId = e.currentTarget.getAttribute("comment_id");  
+    console.log("this is the comment id", commentId);
+    deleteConfirm.href = `delete_comment/${commentId}`;
+    deleteModal.show();
     });
-  }
+};
 
 
 

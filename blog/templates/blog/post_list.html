@@ -19,13 +19,6 @@
                     {% endif %}
                     <div class="image-flash">
                         <h2 class="author">Author: {{ post.author }}</h2>
-                        <div class=" d-none fill img-fluid">
-                            {% if post.mastimage %}
-                            <img class='blogpostlist_image' src="{{ post.mastimage.url }}" alt="Mast Image">
-                            {% else %}
-                            <img class='blogpostlist_image' src="{% static 'images/whiteboard.png' %}" alt="Mast Image">
-                            {% endif %}
-                        </div>
                     </div>
                 </div>
                 <a href="{% url 'blogpost' post.slug %}" class="post-link">

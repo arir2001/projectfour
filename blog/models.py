@@ -22,9 +22,7 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
     tags = TaggableManager(blank=True)
-
-    mastimage = models.ImageField(upload_to='media/masthead_images/', blank=True, null=True, default='static/images/whiteboard.png')
-    
+        
     viewcount = models.PositiveIntegerField(default=0)  # View Count Field
 
     def __str__(self):
