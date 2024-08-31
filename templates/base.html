@@ -9,7 +9,7 @@
 
 <head>
     <title>Anna Rooney Coaching</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Google Fonts CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <!-- dataTable CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.4/css/dataTables.dataTables.css">
   
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -68,7 +68,7 @@
                             href="{% url 'inquiry' %}">inquire </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == '/blog/' %}active" aria-current="page{% endif %}" href="{% url 'blog' %}">blog</a></a>
+                        <a class="nav-link {% if request.path == '/blog/' %}active" aria-current="page{% endif %}" href="{% url 'blog' %}">blog</a>
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
