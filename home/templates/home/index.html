@@ -1,12 +1,8 @@
 {% extends 'base.html'%}
 {% load static %}
 {% load blog_extras %}
+
 {% block content %}
-<html>
-<head>
-    <title>Home Page</title>
-</head>
-<body>
     <section id="landing">
         <div class="container-fluid">
             <div class="row">
@@ -115,10 +111,10 @@
                             <div class="row d-flex h-100 align-content-center flex-wrap text-center justify-content-center libre-baskerville-regular">
                                 <div class="w-100 h3 text-center"><p >{{ testimonial.get_service_display}}</p></div>
                                 <div class="col-md-5 d-flex align-items-center mt-3">
-                                    <div class="w-100 h4 "><p >{{testimonial.testimonial| safe}}</p></div>
+                                    <div class="w-100 h4 ">{{testimonial.testimonial| safe}}</div>
                                 </div>
                                 <div class="col-md-5 d-flex align-items-center mt-3">
-                                    <div class="w-100 h4  libre-baskerville-regular-italic"><p >{{testimonial.name}}, {{ testimonial.age }}, {{ testimonial.extra_detail }}</p></div>    
+                                    <div class="w-100 h4  libre-baskerville-regular-italic"><p>{{testimonial.name}}, {{ testimonial.age }}, {{ testimonial.extra_detail }}</p></div>    
                                 </div>
                             </div>                    
                         </div>
@@ -164,10 +160,10 @@
                         <div class="d-flex">
                             {% if "placeholder" in post.featured_image.url %}
                             <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.png' %}"
-                              alt="placeholder image">
+                                alt="placeholder image">
                             {% else %}
                             <img class="card-img-top blogpostlist_image" src=" {{ post.featured_image.url }}"
-                              alt="{{ post.title }}">
+                                alt="{{ post.title }}">
                             {% endif %}
                             <div class="image-flash">
                                 <h1 class=" text-white">{{ post.title }}</h1>
@@ -176,7 +172,7 @@
                         <a href="{% url 'blogpost' post.slug %}" class="post-link">
                             <p class="card-text"> {{ post.excerpt |truncatewords:20|slice:":-1" }}.. <strong>read more</strong> </p>
                         </a>
-                        <hr />
+                        <hr>
                         <p class="card-text text-muted h6">{{ post.created_on}}</p>
                         {% endfor %}
                     </div>
@@ -187,11 +183,9 @@
         </div>
         
     </section>
-</body>
-</html>
-
 {% endblock %}
+
 {% block extras %}
-<script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
 

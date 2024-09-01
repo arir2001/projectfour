@@ -1,47 +1,48 @@
 {% extends "base.html" %}
 {% load static %}
-{% block content %}
 {% load crispy_forms_tags %}
 
-<div class="container-fluid">
-    <div class="row mt-2">
-        <div class="col">
-            <form method="POST" action="{% url 'search-posts' %}">
-                {% csrf_token %}
-                <div class="col d-flex justify-content-space-evenly align-items-center">
-                    <input class="form-control mr-sm-2" type="text" name="searched" value="{{ search_term }}" placeholder="Search by title.." class="form-control">
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <!-- Search content will go here -->
-    <div>
-        <div class="col-md-12  mt-3 left">
-            {% block search_content %}
-            <!-- Search content will go here -->
-            {% endblock %}
-        </div>
-        <!-- Blog Entries Column -->
-        <div class="col-12 mt-3 left">
-            {% block blog_content %}
-            <!-- Blog content will go here -->
-            {% endblock %}
-        </div>
-    </div>
-    {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination justify-content-center">
-            {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link"> BACK &laquo;</a></li>
-            {% endif %}
-            {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-    {% endif %}
-</div>
 
-<!-- index.html content ends here -->
+{% block content %}
+    <!-- blog base starts -->
+    <div class="container-fluid">
+            <div class="row mt-2">
+                <div class="col">
+                    <form method="POST" action="{% url 'search-posts' %}">
+                        {% csrf_token %}
+                        <div class="col d-flex justify-content-space-evenly align-items-center">
+                            <input class="form-control mr-sm-2" type="text" name="searched" value="{{ search_term }}" placeholder="Search by title..">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- content will go here -->
+            <div class="row">
+                <div class="col-md-12  mt-3 left">
+                        {% block search_content %}
+                        <!-- Search content will go here -->
+                        {% endblock %}
+                </div>
+                <!-- Blog Entries Column -->
+                <div class="col-12 mt-3 left">
+                        {% block blog_content %}
+                        <!-- Blog content will go here -->
+                        {% endblock %}
+                </div>
+            </div>
+            {% if is_paginated %}
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link"> BACK &laquo;</a></li>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+    </div>
+    <!-- end blog base -->
 {% endblock %}

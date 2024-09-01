@@ -30,8 +30,10 @@ console.log(editButtons.length);
 */
 for (let button of editButtons) {
   button.addEventListener("click", (e) => {
-    let commentId = e.target.getAttribute("comment_id");
+    let commentId = e.currentTarget.getAttribute("data-comment-id");
+    console.log('commentId.', commentId)
     let commentContent = document.getElementById(`comment${commentId}`).innerText;
+    console.log(`comment${commentId}`)
     console.log('commentConect.', commentContent)
     commentText.value = commentContent;
     document.getElementById(`comment${commentId}`).innerText = "Updating comment...";
@@ -52,7 +54,7 @@ for (let button of editButtons) {
 */
 for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
-    let commentId = e.currentTarget.getAttribute("comment_id");  
+    let commentId = e.currentTarget.getAttribute("data-comment-id");  
     console.log("this is the comment id", commentId);
     deleteConfirm.href = `delete_comment/${commentId}`;
     deleteModal.show();
@@ -63,7 +65,7 @@ for (let button of deleteButtons) {
 
 for (let button of approveButtons) {
   button.addEventListener("click", (e) => {
-    let commentId = e.currentTarget.getAttribute("comment_id");
+    let commentId = e.currentTarget.getAttribute("data-comment-id");
     let commentapproved = e.currentTarget.getAttribute("comment_approved");
     
     console.log("this is the comment apr", commentapproved)

@@ -4,73 +4,74 @@
 {% load blog_extras %}
 
 {% block search_content %}
-<div class="row">
-    {% if searched %}
-        <h1> You searched for "{{searched}}"  </h1>
-        {%if titles%}
-            {%for post in titles%}
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <a href="{% url 'blogpost' post.slug %}" class="post-link">
-                            <div class="image-container">
-                                {% if "placeholder" in post.featured_image.url %}
-                                <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.png' %}"
-                                alt="placeholder image">
-                                {% else %}
-                                <img class="card-img-top blogpostlist_image" src=" {{ post.featured_image.url }}"
-                                alt="{{ post.title }}">
-                                {% endif %}
-                                <div class="image-flash">
-                                    <h2 class="author">{{ post.title }}</h2>
-                                </div>
-                            </div>
-                            <p class="card-text"> {{ post.excerpt |truncatewords:20|slice:":-1" }}.. <strong>read more</strong> </p>
-                            <hr/>
-                            <p class="card-text text-muted h6">{{ post.created_on}}</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            {%endfor%}
-        {%else%}
-        <div class="col">
-            <h2> Nothing related to your search.</h2>
-        {%endif%}
-    {% else %}
-        <h1> You did not search for anything. </h1>
-    {% endif %}
+    <!-- search post template -->
     <div class="row">
-        <h2> You might like this:</h2>
-<div class="row d-flex text-center align-items-center justify-content-center">
-    <div class="card mb-4">
-        <div class="card-body">
-            <div class="row d-flex">
-                {% get_recent_blog_posts as recent_posts %}
-                {% for post in recent_posts %}
-                <a href="{% url 'blogpost' post.slug %}" class="post-link">
-                    <div class="image-container d-flex">
-                        {% if "placeholder" in post.featured_image.url %}
-                        <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.png' %}"
-                        alt="placeholder image">
-                        {% else %}
-                        <img class="card-img-top blogpostlist_image" src=" {{ post.featured_image.url }}"
-                        alt="{{ post.title }}">
-                        {% endif %}
-                        <div class="image-flash">
-                            <h2 class="author">{{ post.title }}</h2>
-                            <p class="card-text p-2 text-white"> {{ post.excerpt |truncatewords:20|slice:":-1" }}.. <strong>read more</strong> </p>
+        {% if searched %}
+            <h1> You searched for "{{searched}}"  </h1>
+            {%if titles%}
+                {%for post in titles%}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <a href="{% url 'blogpost' post.slug %}" class="post-link">
+                                <div class="image-container">
+                                    {% if "placeholder" in post.featured_image.url %}
+                                    <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.png' %}"
+                                    alt="placeholder image">
+                                    {% else %}
+                                    <img class="card-img-top blogpostlist_image" src=" {{ post.featured_image.url }}"
+                                    alt="{{ post.title }}">
+                                    {% endif %}
+                                    <div class="image-flash">
+                                        <h2 class="author">{{ post.title }}</h2>
+                                    </div>
+                                </div>
+                                <p class="card-text"> {{ post.excerpt |truncatewords:20|slice:":-1" }}.. <strong>read more</strong> </p>
+                                <hr>
+                                <p class="card-text text-muted h6">{{ post.created_on}}</p>
+                            </a>
                         </div>
                     </div>
-                    
-                </a>
-                {% endfor %}
+                </div>
+                {%endfor%}
+            {%else%}
+            <div class="col">
+                <h2> Nothing related to your search.</h2>
+            {%endif%}
+        {% else %}
+            <h1> You did not search for anything. </h1>
+        {% endif %}
+        <div class="row">
+            <h2> You might like this:</h2>
+    <div class="row d-flex text-center align-items-center justify-content-center">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row d-flex">
+                    {% get_recent_blog_posts as recent_posts %}
+                    {% for post in recent_posts %}
+                    <a href="{% url 'blogpost' post.slug %}" class="post-link">
+                        <div class="image-container d-flex">
+                            {% if "placeholder" in post.featured_image.url %}
+                            <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.png' %}"
+                            alt="placeholder image">
+                            {% else %}
+                            <img class="card-img-top blogpostlist_image" src=" {{ post.featured_image.url }}"
+                            alt="{{ post.title }}">
+                            {% endif %}
+                            <div class="image-flash">
+                                <h2 class="author">{{ post.title }}</h2>
+                                <p class="card-text p-2 text-white"> {{ post.excerpt |truncatewords:20|slice:":-1" }}.. <strong>read more</strong> </p>
+                            </div>
+                        </div>
+                        
+                    </a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
-</div>
+        </div>
     </div>
-</div>
-</div>
-
+    </div>
+    <!-- end search post template -->
 {% endblock %}

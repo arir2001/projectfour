@@ -1,40 +1,40 @@
 {% extends "blog/blog_base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
-{% block blog_content %}
+
 {% load blog_extras %}
 
-<div class="row">
-    {% for post in post_list %}
-    <div class="col-md-4">
-        <div class="card mb-4">
-            <div class="card-body">
-                <a href="{% url 'blogpost' post.slug %}" class="post-link">
-                    <div class="image-container">
-                        {% if "placeholder" in post.featured_image.url %}
-                        <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.png' %}"
-                        alt="placeholder image">
-                        {% else %}
-                        <img class="card-img-top blogpostlist_image" src=" {{ post.featured_image.url }}"
-                        alt="{{ post.title }}">
-                        {% endif %}
-                        <div class="image-flash">
-                            <h2 class="author">{{ post.title }}</h2>
+{% block blog_content %}
+<!-- postlist template -->
+    <div class="row">
+        {% for post in post_list %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <a href="{% url 'blogpost' post.slug %}" class="post-link">
+                        <div class="image-container">
+                            {% if "placeholder" in post.featured_image.url %}
+                            <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.png' %}"
+                            alt="placeholder image">
+                            {% else %}
+                            <img class="card-img-top blogpostlist_image" src=" {{ post.featured_image.url }}"
+                            alt="{{ post.title }}">
+                            {% endif %}
+                            <div class="image-flash">
+                                <h2 class="author">{{ post.title }}</h2>
+                            </div>
                         </div>
-                    </div>
-                    <p class="card-text"> {{ post.excerpt |truncatewords:20|slice:":-1" }}.. <strong>read more</strong> </p>
-                    <hr/>
-                    <p class="card-text text-muted h6">{{ post.created_on}}</p>
-                </a>
+                        <p class="card-text"> {{ post.excerpt |truncatewords:20|slice:":-1" }}.. <strong>read more</strong> </p>
+                        <hr>
+                        <p class="card-text text-muted h6">{{ post.created_on}}</p>
+                    </a>
+                </div>
             </div>
         </div>
+        {% if forloop.counter|divisibleby:3 %}
+        {% endif %}
+        {% endfor %}
     </div>
-    {% if forloop.counter|divisibleby:3 %}
-</div>
-<div class="row">
-    {% endif %}
-    {% endfor %}
 
-</div>
-
+<!-- end postlist template -->
 {% endblock %}

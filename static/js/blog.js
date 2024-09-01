@@ -7,7 +7,7 @@ const modalBody = document.getElementById("modalbody-innertext");
 /*STATUS = ((0, "Draft"), (1, "Published"), )*/
 for (let button of publishButtons) {
   button.addEventListener("click", (e) => {
-    let postId = e.currentTarget.getAttribute("post_id");
+    let postId = e.currentTarget.getAttribute("data-post-id");
     let postStatus = e.currentTarget.getAttribute("post_status");
     
     console.log("this is the post status", postStatus)

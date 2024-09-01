@@ -3,139 +3,141 @@
 {% load static %}
 
 {% block blog_content %}
-<div class="container-fluid">
-    <div class="row mt-2">
-        <div class="col-md-4">
-          <h2> New comments to review: </h2>
-            <div id='newcommentstoreview' class=" p-2 m-2 commentdiv">   
-                <div>  
-                    {% if unapproved_comments %}
-                    {% with unapproved_comments|slice:":5" as limited_comments %}
-                    {% for comment in limited_comments %}
-                      <div class=" comments d-flex justify-content-around">
-                        <div class="col-md-6 p-2">
-                          <p class="font-weight-bold">
-                            {{ comment.author }} on <span class="font-weight-normal"> {{ comment.created_on }}</span> 
-                            wrote:
-                          </p>
-                          <div id="comment{{ comment.id }}">
-                            {{ comment.body | safe }}
+  <!-- dashboard.html starts-->
+
+  <div class="container-fluid">
+      <div class="row mt-2">
+          <div class="col-md-4">
+            <h2> New comments to review: </h2>
+              <div id='newcommentstoreview' class=" p-2 m-2 commentdiv">   
+                  <div>  
+                      {% if unapproved_comments %}
+                      {% with unapproved_comments|slice:":5" as limited_comments %}
+                      {% for comment in limited_comments %}
+                        <div class=" comments d-flex justify-content-around">
+                          <div class="col-md-6 p-2">
+                            <p class="font-weight-bold">
+                              {{ comment.author }} on <span class="font-weight-normal"> {{ comment.created_on }}</span> 
+                              wrote:
+                            </p>
+                            <div id="comment{{ comment.id }}">
+                              {{ comment.body | safe }}
+                            </div>
+                          </div>
+                          <div class="col-md-6 p-2">
+                            <p class="approval">
+                              This comment is awaiting approval. Approve it?
+                            </p>
+                            <!-- Display Delete, Archive?, Approve Button -->
+                            <button class="btn btn-delete" data-comment-id="{{ comment.id }}">Delete</button>
+                            <button class="btn btn-approve" data-comment-id="{{ comment.id }}" >Approve</button>
+                            
                           </div>
                         </div>
-                        <div class="col-md-6 p-2">
-                          <p class="approval">
-                            This comment is awaiting approval. Approve it?
-                          </p>
-                          <!-- Display Delete, Archive?, Approve Button -->
-                          <button class="btn btn-delete" comment_id="{{ comment.id }}">Delete</button>
-                          <button class="btn btn-approve" comment_id="{{ comment.id }}" >Approve</button>
-                          
-                        </div>
-                      </div>
-                    {% endfor %}
-                    {% endwith %}
-                  {% else %}
-                    <p class="approval">There are no comments yet.</p>
-                  {% endif %}
+                      {% endfor %}
+                      {% endwith %}
+                    {% else %}
+                      <p class="approval">There are no comments yet.</p>
+                    {% endif %}
+              </div>
             </div>
-          </div>
-          <div class="row"> 
-            <div class="col-md-6">
-              <a href="{% url 'comments_admin' %}" class="btn btn-danger">View and Manage all comments</a>
-            </div>
-            {% if unapproved_comments|length > 5 %}
-            <div class="col-md-6">
-              <p> there are more comments to be approved. </p>
-            </div>
-            {% endif %}
-          </div>          
-      </div>
-      
-    <div class="col-md-8 blogpostdivadmin">
-      <h2> Most Recent Blog Posts: </h2>
-      {% for post in posts%}
-      <div class="row ">
-        <div class="card mb-4">
-          <div class="row card-body d-flex">
-            <div class="col-md-4 image-container p-2">
-              {% if "placeholder" in post.featured_image.url %}
-              <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.png' %}"
-                alt="placeholder image">
-              {% else %}
-              <img class="card-img-top blogpostlist_image" src=" {{ post.featured_image.url }}"
-                alt="{{ post.title }}">
+            <div class="row"> 
+              <div class="col-md-6">
+                <a href="{% url 'comments_admin' %}" class="btn btn-danger">View and Manage all comments</a>
+              </div>
+              {% if unapproved_comments|length > 5 %}
+              <div class="col-md-6">
+                <p> there are more comments to be approved. </p>
+              </div>
               {% endif %}
-            </div>
-            <div class="col-md-4">
-              <a href="{% url 'blogpost' post.slug %}" class="post-link">
-                <h4 class="card-title">{{ post.title }}</h4>
-                <p class="card-text"> {{ post.excerpt |truncatewords:20|slice:":-1" }}.. <strong>read more</strong> </p>
-              </a>
-            </div>
-            <div class="col-md-4">
-              <p class="card-text text-muted h6">{{ post.created_on}}</p>
-              <a href="{% url 'edit_post' post.slug %}" class=" btn btn-danger">Edit</a>
+            </div>          
+        </div>
+        
+      <div class="col-md-8 blogpostdivadmin">
+        <h2> Most Recent Blog Posts: </h2>
+        {% for post in posts%}
+        <div class="row ">
+          <div class="card mb-4">
+            <div class="row card-body d-flex">
+              <div class="col-md-4 image-container p-2">
+                {% if "placeholder" in post.featured_image.url %}
+                <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.png' %}"
+                  alt="placeholder image">
+                {% else %}
+                <img class="card-img-top blogpostlist_image" src=" {{ post.featured_image.url }}"
+                  alt="{{ post.title }}">
+                {% endif %}
+              </div>
+              <div class="col-md-4">
+                <a href="{% url 'blogpost' post.slug %}" class="post-link">
+                  <h4 class="card-title">{{ post.title }}</h4>
+                  <p class="card-text"> {{ post.excerpt |truncatewords:20|slice:":-1" }}.. <strong>read more</strong> </p>
+                </a>
+              </div>
+              <div class="col-md-4">
+                <p class="card-text text-muted h6">{{ post.created_on}}</p>
+                <a href="{% url 'edit_post' post.slug %}" class=" btn btn-danger">Edit</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      {% endfor %}
-    <div class="row mt-2">
+        {% endfor %}
+      <div class="row mt-2">
 
-    </div>
-</div>
-
-<!-- Delete confirmation modal -->
-<div class="modal fade" id="deleteModal" tabindex="-1"
-  aria-labelledby="deleteModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"
-          id="deleteModalLabel">Delete comment?</h5>
-        <button type="button" class="btn-close"
-          data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        Are you sure you want to delete this comment?
-        This action cannot be undone.
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
-          data-bs-dismiss="modal">Close</button>
-        <a id="deleteConfirm" href="#" class="btn
-          btn-danger">Delete</a>
-      </div>
-    </div>
   </div>
-</div>
 
-
-<div class="modal fade" id="approveModal" tabindex="-1"
-  aria-labelledby="approveModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
+  <!-- Delete confirmation modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1"
+    aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title"
-            id="approveModalLabel">Approve comment?</h5>
+            id="deleteModalLabel">Delete comment?</h5>
           <button type="button" class="btn-close"
             data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <p id="modalbody-innertext">Are you sure you want to approve this comment?</p>
+          Are you sure you want to delete this comment?
+          This action cannot be undone.
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary"
             data-bs-dismiss="modal">Close</button>
-          <a id="approveConfirm" href="#" class="btn
-            btn-danger">Approve</a>
+          <a id="deleteConfirm" href="#" class="btn
+            btn-danger">Delete</a>
         </div>
-        
+      </div>
     </div>
   </div>
-</div>
+
+
+  <div class="modal fade" id="approveModal" tabindex="-1"
+    aria-labelledby="approveModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"
+              id="approveModalLabel">Approve comment?</h5>
+            <button type="button" class="btn-close"
+              data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p id="modalbody-innertext">Are you sure you want to approve this comment?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary"
+              data-bs-dismiss="modal">Close</button>
+            <a id="approveConfirm" href="#" class="btn
+              btn-danger">Approve</a>
+          </div>
+          
+      </div>
+    </div>
+  </div>
+  <!-- dashboard.html ends-->
 {% endblock blog_content %}
 {% block extras %}
-<script src="{% static 'js/script.js' %}"></script>
-<script src="{% static 'js/comments.js' %}"></script>
+  <script src="{% static 'js/comments.js' %}"></script>
 {% endblock %}
