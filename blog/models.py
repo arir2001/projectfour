@@ -7,11 +7,12 @@ from taggit.managers import TaggableManager
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
-        User, on_delete=models.CASCADE, 
+        User, on_delete=models.CASCADE,
         related_name="blog_posts")
 
     featured_image = CloudinaryField('image', default='placeholder')
@@ -22,7 +23,6 @@ class Post(models.Model):
     updated_on = models.DateTimeField(auto_now=True)
     status = models.IntegerField(choices=STATUS, default=0)
     tags = TaggableManager(blank=True)
-        
     viewcount = models.PositiveIntegerField(default=0)  # View Count Field
 
     def __str__(self):
@@ -30,8 +30,6 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-created_on"]
-
-
 
 
 class Comment(models.Model):

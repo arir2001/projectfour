@@ -23,7 +23,7 @@
                 <td> {{post.get_status_display }} </td>
                 <td> 
                   <div class="col d-flex flex-column-reverse align-items-stretch ">
-                    <button class="btn btn-publish m-1" data-post-id="{{ post.slug }}" post_status="{{ post.status }}">
+                    <button class="btn btn-publish m-1" data-post-id="{{ post.slug }}" data-post-status="{{ post.status }}">
                       {% if post.status == 1 %}
                           Unpublish
                       {% else %}

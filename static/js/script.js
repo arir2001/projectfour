@@ -1,5 +1,9 @@
 //timer adapted from: https://www.htmlcenter.com/blog/pausing-javascript-timers/
 //slide show adapted from: https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_auto
+//this presents a slide show of the testimonials on the idnex page.
+/* global $ */
+
+
 var t = null; /* Our timeout ID */
 var startTimeout = new Date(); /* When the timer starts */
 var timeLeft = 0; /* How much time is left */
@@ -75,4 +79,4 @@ https://mdbootstrap.com/docs/standard/extended/sidebar-menu-collapse/
 
 */
 // Initialization for ES Users
-$('.collapse').collapse()
+$('.collapse').collapse();

@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+/* global $ */
 const publishButtons = document.getElementsByClassName("btn-publish");
 const publishConfirm = document.getElementById("publishConfirm");
 const publishModal = new bootstrap.Modal(document.getElementById("publishModal"));
@@ -10,8 +12,8 @@ for (let button of publishButtons) {
     let postId = e.currentTarget.getAttribute("data-post-id");
     let postStatus = e.currentTarget.getAttribute("post_status");
     
-    console.log("this is the post status", postStatus)
-    console.log("this is the post id", postId)
+    console.log("this is the post status", postStatus);
+    console.log("this is the post id", postId);
 
     if (postStatus == "1"){
         console.log("entered if 1");
@@ -31,7 +33,7 @@ for (let button of publishButtons) {
         publishModal.show();
     }
   });
-};
+}
 
 const deleteModal = new bootstrap.Modal(document.getElementById("deletePostModal"));
 const deleteButtons = document.getElementsByClassName("btn-delete");
@@ -40,7 +42,7 @@ const deleteConfirm = document.getElementById("deleteConfirm");
 for (let button of deleteButtons) {
   button.addEventListener("click", (e) => {
     let postId = e.target.getAttribute("post_id");
-    console.log("this is the comment id", postId)
+    console.log("this is the comment id", postId);
     deleteConfirm.href = `delete_post/${postId}`;
     deleteModal.show();
   });

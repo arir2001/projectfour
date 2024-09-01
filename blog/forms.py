@@ -2,6 +2,7 @@ from .models import Comment, Post
 from django import forms
 from django_summernote.widgets import SummernoteWidget
 
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
@@ -11,5 +12,9 @@ class CommentForm(forms.ModelForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ('title','slug', 'featured_image', 'excerpt', 'content', 'status', 'tags')
-        widgets = {'content': SummernoteWidget(), 'status': forms.RadioSelect() }  
+        fields = (
+            'title', 'slug', 'featured_image',
+            'excerpt', 'content', 'status', 'tags')
+        widgets = {
+            'content': SummernoteWidget(),
+            'status': forms.RadioSelect()}

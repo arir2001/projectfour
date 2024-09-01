@@ -21,6 +21,7 @@ import sys
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
+from django.contrib import messages
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -39,7 +40,8 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # Define the MEDIA_URL and MEDIA_ROOT
 MEDIA_URL = '/media/'  # URL to access media files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # directory where media files will be stored from blog posts
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# directory where media files will be stored from blog posts
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-d*@)=umdr^krouu&xai(-)#(9^ywuvv2xs+#*9jgme*_8xk=y)'
@@ -48,8 +50,8 @@ SECRET_KEY = 'django-insecure-d*@)=umdr^krouu&xai(-)#(9^ywuvv2xs+#*9jgme*_8xk=y)
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-arir2001-projectfour-e83ax3w80zz.ws-eu115.gitpod.io'
-    ,'.herokuapp.com'
+    '8000-arir2001-projectfour-e83ax3w80zz.ws-eu115.gitpod.io',
+    '.herokuapp.com'
 ]
 
 
@@ -102,7 +104,6 @@ CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
 }
 
-from django.contrib import messages
 MESSAGE_TAGS = {
     messages.DEBUG: 'debug',
     messages.INFO: 'info',
@@ -129,7 +130,7 @@ TEMPLATES = [
     },
 ]
 
-#THIS IS THE ROUTE!
+# THIS IS THE ROUTE!
 WSGI_APPLICATION = 'coaching.wsgi.application'
 
 # Database
@@ -152,16 +153,20 @@ CSRF_TRUSTED_ORIGINS = [
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+            'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
 
