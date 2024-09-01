@@ -61,7 +61,7 @@
             <div class="row card-body d-flex">
               <div class="col-md-4 image-container p-2">
                 {% if "placeholder" in post.featured_image.url %}
-                <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.png' %}"
+                <img class="card-img-top blogpostlist_image" src="{% static 'images/bwlandingimage.webp' %}"
                   alt="placeholder image">
                 {% else %}
                 <img class="card-img-top blogpostlist_image" src=" {{ post.featured_image.url }}"
