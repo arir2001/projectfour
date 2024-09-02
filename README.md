@@ -7,10 +7,21 @@ This project is a Full-Stack web application developed using the MVC framework. 
 ## Design
 A pinterest was set up to inspire the design of the website, which you can view [here](https://ie.pinterest.com/23annarooney/anna-website/). The mood of the website was strong female entreperneur.
 
-Then Figma was used to design the layout and stylings. You can view the design [here]([https://github.com/NielMc/django_blog](https://www.figma.com/design/oDYCdAq0j987KhdHqZX7iE/anna-coaching?node-id=0-1&t=xUBvgB8R1oULULuY-1)). 
+Then Figma was used to design the layout and stylings. You can view the design [here]([https://github.com/NielMc/django_blog](https://www.figma.com/design/oDYCdAq0j987KhdHqZX7iE/anna-coaching?node-id=0-1&t=xUBvgB8R1oULULuY-1)). The idea was to have a home page, about me page, about you page (services) and a content page with links to youtube, blog and other content. The final design ended up being simpler, with just a home page, inquire page, blog page, login/out/register page, and for the super users, an admin page. 
 
 The colors of the site: 
+
 ![colors](https://github.com/user-attachments/assets/fc8f2fa6-a305-4ad4-97d7-561c5457b864)
+
+## Responsiveness: 
+
+
+<img width="578" alt="Screenshot 2024-09-02 at 09 34 49" src="https://github.com/user-attachments/assets/5230c30a-70fd-4bd1-9424-c8fd381728c3">
+
+<img width="632" alt="Screenshot 2024-09-02 at 09 35 26" src="https://github.com/user-attachments/assets/376c56d7-58d4-4186-a36d-7284f3d99654">
+
+<img width="969" alt="Screenshot 2024-09-02 at 09 35 58" src="https://github.com/user-attachments/assets/17b6592d-c7cd-4dc7-83d2-b7950b623996">
+
 
 
 
