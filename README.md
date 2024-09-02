@@ -2,7 +2,17 @@
 
 ## Overview
 
-This project is a Full-Stack web application developed using the MVC framework. The application includes a blog, testimonials, comment sections, and admin features. The development process followed Agile methodologies, ensuring iterative progress and continuous improvement through regular feedback.
+This project is a Full-Stack web application developed using the MVC framework. The application includes a blog, testimonials, comment sections, inquiry form and front-end admin features. The development process followed Agile methodologies, ensuring iterative progress and continuous improvement through regular feedback.
+
+## Design
+A pinterest was set up to inspire the design of the website, which you can view [here](https://ie.pinterest.com/23annarooney/anna-website/). The mood of the website was strong female entreperneur.
+
+Then Figma was used to design the layout and stylings. You can view the design [here]([https://github.com/NielMc/django_blog](https://www.figma.com/design/oDYCdAq0j987KhdHqZX7iE/anna-coaching?node-id=0-1&t=xUBvgB8R1oULULuY-1)). 
+
+The colors of the site: 
+![colors](https://github.com/user-attachments/assets/fc8f2fa6-a305-4ad4-97d7-561c5457b864)
+
+
 
 ## Agile Development Process
 
