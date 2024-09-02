@@ -72,8 +72,9 @@ body{
 }
 
 #landinglogo{
-    width: 100%;
-    padding: 10%;
+    width: auto;  /* Width is 20% of the viewport width */
+    height: auto; /* Height adjusts automatically to maintain aspect ratio */
+    max-width: 100%;  /* Ensures the image doesn’t exceed its container */
 }
 
 .landingimage{
