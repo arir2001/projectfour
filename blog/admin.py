@@ -44,21 +44,12 @@ class PostAdmin(SummernoteModelAdmin):
     ordering = ['status', '-created_on']
 
     list_display = (
-        'title', 'slug', 'status', 'tagslist', 'mastimage_thumbnail')
+        'title', 'slug', 'status', 'tagslist')
     search_fields = ['title']
     list_filter = ('status',)
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content',)
     actions = [re_draft, publish, archive]
-
-    def mastimage_thumbnail(self, obj):
-        if obj.mastimage:
-            return format_html(
-                '<a href="{url}" target="_blank">View Image</a>',
-                url=obj.mastimage.url)
-        return 'No image'
-
-    mastimage_thumbnail.short_description = 'Image Preview'
 
     def tagslist(self, obj):
         if obj.tags.exists():

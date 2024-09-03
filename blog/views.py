@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from .models import Post, Comment
 from .forms import CommentForm, PostForm
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 # Post and comment models adapted from CodeInstitute Django Blog
 
@@ -106,6 +107,8 @@ def comment_delete(request, comment_id, slug=None):
     return HttpResponseRedirect(referer_url)
 
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def comment_approve(request, comment_id):
     """View to approve comment in user admin"""
     comment = get_object_or_404(Comment, pk=comment_id)
@@ -123,6 +126,8 @@ def comment_approve(request, comment_id):
     return HttpResponseRedirect(referer_url)
 
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def user_admin(request):
     """Show the comments and posts in admin"""
     posts = Post.objects.all()
@@ -141,6 +146,8 @@ def user_admin(request):
     )
 
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def comments_admin(request):
     """Manage comments in admin"""
     unapproved_comments = Comment.objects.filter(approved=False)
@@ -157,6 +164,8 @@ def comments_admin(request):
     )
 
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def create_or_update_post(request, slug=None):
     """Create or update a blog post"""
     if not request.user.is_superuser:
@@ -183,12 +192,16 @@ def create_or_update_post(request, slug=None):
     return render(request, 'blog/post_form.html', {'form': form})
 
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def blogposts_admin(request):
     """Admin view for blog posts"""
     posts = Post.objects.all()
     return render(request, "blog/blogpostadmin.html", {"posts": posts})
 
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def blog_publish_admin(request, slug):
     """View to approve or unapprove blog post"""
     post = get_object_or_404(Post, slug=slug)
@@ -203,6 +216,8 @@ def blog_publish_admin(request, slug):
     return HttpResponseRedirect(referer_url)
 
 
+@login_required
+@user_passes_test(lambda u: u.is_superuser)
 def post_delete(request, slug):
     """View to delete a blog post"""
     post = get_object_or_404(Post, slug=slug)

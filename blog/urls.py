@@ -31,6 +31,7 @@ urlpatterns = [
 
     # Admin URLs
     path('blog/user_admin/', views.user_admin, name='admin'),
+    
     path(
         'blog/user_admin/comments/',
         views.comments_admin,

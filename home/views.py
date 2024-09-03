@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from home.models import Testimonial, CollaborateRequest, Inquire
 from .forms import CollaborateForm
 from django.contrib import messages
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 
 def home(request):
@@ -31,6 +31,7 @@ def inquiry(request):
 
 
 @login_required
+@user_passes_test(lambda u: u.is_staff)
 def inquiry_list(request):
     inquiries = CollaborateRequest.objects.filter(read=False)
     archived_inquiries = CollaborateRequest.objects.filter(read=True)
@@ -40,6 +41,8 @@ def inquiry_list(request):
     })
 
 
+@login_required
+@user_passes_test(lambda u: u.is_staff)
 def archive_inquiry(request, inquiry_id):
     inquiry = get_object_or_404(CollaborateRequest, pk=inquiry_id)
     inquiry.read = True
@@ -47,6 +50,8 @@ def archive_inquiry(request, inquiry_id):
     return redirect('inquiry_list')
 
 
+@login_required
+@user_passes_test(lambda u: u.is_staff)
 def un_archive_inquiry(request, inquiry_id):
     inquiry = get_object_or_404(CollaborateRequest, pk=inquiry_id)
     inquiry.read = False
