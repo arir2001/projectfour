@@ -9,20 +9,54 @@ A pinterest was set up to inspire the design of the website, which you can view 
 
 Then Figma was used to design the layout and stylings. You can view the design [here]([https://github.com/NielMc/django_blog](https://www.figma.com/design/oDYCdAq0j987KhdHqZX7iE/anna-coaching?node-id=0-1&t=xUBvgB8R1oULULuY-1)). The idea was to have a home page, about me page, about you page (services) and a content page with links to youtube, blog and other content. The final design ended up being simpler, with just a home page, inquire page, blog page, login/out/register page, and for the super users, an admin page. 
 
-The colors of the site: 
+The colors and fonts of the site: 
+<div align="center"> 
+    <img width = "33%" alt="Color theme" src="https://github.com/user-attachments/assets/fc8f2fa6-a305-4ad4-97d7-561c5457b864">
+    <img width="50%" alt="fonts" src="https://github.com/user-attachments/assets/77bc35b3-44e3-4e6d-a461-1020bbdfe1b8">
+</div>
 
-![colors](https://github.com/user-attachments/assets/fc8f2fa6-a305-4ad4-97d7-561c5457b864)
 
 ## Responsiveness: 
 
+<div align="center">
+  <img width = "33%" alt="Iphone response" src="https://github.com/user-attachments/assets/5230c30a-70fd-4bd1-9424-c8fd381728c3">
+  
+  <img width = "33%" alt="Ipad response" src="https://github.com/user-attachments/assets/376c56d7-58d4-4186-a36d-7284f3d99654">
+  
+  <img width = "33%" alt="Nest hub max response" src="https://github.com/user-attachments/assets/17b6592d-c7cd-4dc7-83d2-b7950b623996">
+</div>
 
-<img width="578" alt="Screenshot 2024-09-02 at 09 34 49" src="https://github.com/user-attachments/assets/5230c30a-70fd-4bd1-9424-c8fd381728c3">
+## User differences
 
-<img width="632" alt="Screenshot 2024-09-02 at 09 35 26" src="https://github.com/user-attachments/assets/376c56d7-58d4-4186-a36d-7284f3d99654">
+<div align="center">
+  Superuser navbar: 
+  <img width="80%" alt="navbar superuser" src="https://github.com/user-attachments/assets/59afba7f-5c82-450e-8ee8-cfad78f6a2bf">
 
-<img width="969" alt="Screenshot 2024-09-02 at 09 35 58" src="https://github.com/user-attachments/assets/17b6592d-c7cd-4dc7-83d2-b7950b623996">
+  Non user navbar: 
+  <img width="80%" alt="navbar non user" src="https://github.com/user-attachments/assets/a1a6ea37-b6d4-4683-977d-4e1e63d9a16c">
+
+  Normal user navbar: 
+  <img width="80%" alt="navbar norrmal user" src="https://github.com/user-attachments/assets/8c5a1ce5-fb6a-4266-a0c9-2e2c9bbb250f">
+</div> 
 
 
+Non-users:
+- can view blog posts, comments, and all public pages.
+
+
+Normal users:
+- can view all public pages
+- post and edit their posts
+- press reply to inquiries, which redirects you to email
+- archive/ unarchive inquiries.
+
+
+Super users:
+- can view all pages
+- in admin, approve and delete coments
+- in admin, approve, delete, edit blog posts
+- press reply to inquiries, which redirects you to email
+- archive/ unarchive inquiries.
 
 
 ## Agile Development Process
@@ -95,9 +129,9 @@ The project was divided into multiple sprints. Each sprint focused on delivering
 
 - **Backend**: Django (MVC Framework)
 - **Frontend**: HTML, CSS, JavaScript
-- **Database**: PostgreSQL
+- **Database**: SQLite
 - **Version Control**: Git & GitHub
-- **Deployment**: [Cloud Platform]
+- **Deployment**: Cloudinary
 
 ### Difference between my project and Code Institute's
 
@@ -149,9 +183,7 @@ As there are quite a few similarities between this project and Code Institute's 
   - Basic blog and comment features without the additional layers of user roles or testimonials.
 
 ### Summary of Differences
-My project extends the functionality of the reference project by adding a `Testimonial` model, role-based access control, and enhanced admin features. The reference project is simpler, focusing primarily on the blog and comment system without these additional features. 
-
-My project has a more comprehensive structure and user interaction model, but it doesn’t include a `Reply` model as I previously mentioned. My apologies for that error. Instead, my key differentiator is the inclusion of testimonials and more robust user roles.
+My project extends the functionality of the reference project by adding a `Testimonial` model, role-based access control, and enhanced font-end admin features. The reference project is simpler, focusing primarily on the blog and comment system without these additional features. My project has a more comprehensive structure and user interaction model. 
 
 
 
@@ -162,7 +194,7 @@ The site was deployed to Heruko App. The steps to do so are as follows:
 - Link github repository
 - In settings of the app page, add Python and Nodes.js buildpacks
 - Config Vars was set to the appropriate Cloudinary Platform, the approrpiate data base set up by code institute, and the secret keys. 
-- Deploy the branch, let the game build itself, and the launch.
+- Deploy the branch, and launch.
 
 
 ## Testing
@@ -170,9 +202,6 @@ The site was deployed to Heruko App. The steps to do so are as follows:
 
 ## Deployment
 
-The application is deployed on [Cloud Platform]. Follow the deployment guide in the `README` for detailed instructions.
+The application is deployed on Heroku.
 
-## Contributing
-
-Please follow the contribution guidelines in the `CONTRIBUTING.md` file.
 
