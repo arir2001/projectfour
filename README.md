@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a Full-Stack web application developed using the MVC framework. The application includes a blog, testimonials, comment sections, inquiry form and front-end admin features. The development process followed Agile methodologies, ensuring iterative progress and continuous improvement through regular feedback.
+This project is a Full-Stack web application developed using the moodel-views-controler framework. The application includes a blog, testimonials, comment sections, inquiry form and front-end admin features. The development process followed Agile methodologies, ensuring iterative progress and continuous improvement through regular feedback.
 
 ## Design
 A pinterest was set up to inspire the design of the website, which you can view [here](https://ie.pinterest.com/23annarooney/anna-website/). The mood of the website was strong female entreperneur.
@@ -43,13 +43,11 @@ The colors and fonts of the site:
 Non-users:
 - can view blog posts, comments, and all public pages.
 
-
 Normal users:
 - can view all public pages
 - post and edit their posts
 - press reply to inquiries, which redirects you to email
 - archive/ unarchive inquiries.
-
 
 Super users:
 - can view all pages
@@ -58,7 +56,11 @@ Super users:
 - press reply to inquiries, which redirects you to email
 - archive/ unarchive inquiries.
 
+### The layout: 
 
+<img width="953" alt="LANDING PAGE" src="https://github.com/user-attachments/assets/a43573fb-c821-4736-bf38-491250e8b78e">
+
+<img width="1663" alt="INQUIRE SECTION" src="https://github.com/user-attachments/assets/b511281c-8810-4893-9107-1edb195f541b">
 ## Agile Development Process
 
 ### User Stories
@@ -68,7 +70,7 @@ User stories were created to capture the requirements and expectations of the en
 The project was divided into multiple sprints. Each sprint focused on delivering a specific set of features, with tasks tracked and managed using [Agile Tool/Platform used].
 
 - **Sprint 1: Initial Setup & Core Features**
-  - Setup MVC Framework: Established the project structure using Django. Basic template from [Code Institute's Blog app](https://github.com/NielMc/django_blog): 
+  - Setup model-views-controller framework: Established the project structure using Django. Basic template from [Code Institute's Blog app](https://github.com/NielMc/django_blog): 
   - User Authentication: Implemented user login, registration, and role-based access control.
 
 - **Sprint 2: Blog & Testimonials**
@@ -101,7 +103,7 @@ The project was divided into multiple sprints. Each sprint focused on delivering
 ### Admin Features
 - **Dashboard**: Admins have access to a dedicated dashboard for managing site content.
 - **User Management**: Admins can assign roles and manage user access.
-- **Content Moderation**: Admins can approve or delete comments and testimonials.
+- **Content Moderation**: Admins can approve or delete comments.
 
 ## Models
 
@@ -129,9 +131,9 @@ The project was divided into multiple sprints. Each sprint focused on delivering
 
 - **Backend**: Django (MVC Framework)
 - **Frontend**: HTML, CSS, JavaScript
-- **Database**: SQLite
+- **Database**: SQLite, Cloudinary
 - **Version Control**: Git & GitHub
-- **Deployment**: Cloudinary
+- **Deployment**: Heroku
 
 ### Difference between my project and Code Institute's
 
@@ -142,7 +144,7 @@ As there are quite a few similarities between this project and Code Institute's 
     - Models: `Post`, `Comment`, `Testimonial`
     - difference:  `Testimonial` model and more detailed user authentication with role-based access control.
   - **File**: `views.py` (in `blog` app)
-    - Handles CRUD operations for posts, comments, and testimonials.
+    - Handles CRUD operations for posts, comments.
 
 - **Reference Project (`django_blog`)**:
   - **File**: `models.py` (in `blog` app)
@@ -163,7 +165,7 @@ As there are quite a few similarities between this project and Code Institute's 
     - `Testimonial` model (not present in `django_blog`):
       - Fields: `user`, `content`, `approved`, `created_at`.
       - **File**: `models.py` (in `home` app).
-      - Adds a layer for user-submitted testimonials, managed by admins.
+      - testimonials, managed by admins in back admin.
   - **Reference Project**:
     - Does not include this model.
 
@@ -177,7 +179,7 @@ As there are quite a few similarities between this project and Code Institute's 
 
 #### **4. Features**
 - **My Project**:
-  - **Added Features**: Testimonial submissions, role-based access control, admin dashboard.
+  - **Added Features**: Testimonials, role-based access control, admin dashboard.
   - More complex interactions, allowing admins to moderate comments and testimonials.
 - **Reference Project**:
   - Basic blog and comment features without the additional layers of user roles or testimonials.
@@ -198,6 +200,15 @@ The site was deployed to Heruko App. The steps to do so are as follows:
 
 
 ## Testing
+
+# In Lighthouse: 
+- The original score was 62%. This was changed to 97 by uploading the images as webp instead of pngs. 
+<div>
+    <img width="80%" alt="Lighthouse Report" src="https://github.com/user-attachments/assets/38075c21-0250-4325-9820-9f639fbd9dd1">
+</div>
+
+
+
 
 
 ## Deployment
