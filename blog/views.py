@@ -10,10 +10,9 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 from django.shortcuts import render
 
+#to see why csrf isnt working!
 def csrf_failure(request, reason=""):
     return render(request, "blog/csrf_failure.html", {'reason': reason})
-
-
 
 
 #creates list of posts for blog

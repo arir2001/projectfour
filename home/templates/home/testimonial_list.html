@@ -1,0 +1,120 @@
+{% extends "blog/blogadmin_base.html" %}
+{% load static %}
+{% block blog_content %}
+<div class="row">
+    <h2 class="m-2">Testimonials</h2>
+
+</div>
+
+<table class="table p-2 m-2">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Extra Detail</th>
+            <th>Testimonial</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for testimonial in testimonials %}
+        <tr>
+            <td>{{ testimonial.name }}</td>
+            <td>{{ testimonial.age }}</td>
+            <td>{{ testimonial.extra_detail }}</td>
+            <td>{{ testimonial.testimonial | safe}}</td>
+            <td>{{ testimonial.get_status_display }}</td>
+            <td>
+                <div class="col d-flex flex-column-reverse align-items-stretch ">
+                    <button class="btn btn-publish m-1" data-testimonial-id="{{ testimonial.id }}" data-testimonial-status="{{ testimonial.status }}">
+                        {% if testimonial.status == 1 %}
+                            Unpublish
+                        {% else %}
+                            Publish
+                        {% endif %}
+                    </button>
+                    <button class="btn btn-delete m-1" data-testimonial-id="{{ testimonial.id }}">Delete</button>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+        {% for testimonial in unpublished_testimonials %}
+        <tr class="text-muted">
+            <td>{{ testimonial.name }}</td>
+            <td>{{ testimonial.age }}</td>
+            <td>{{ testimonial.extra_detail }}</td>
+            <td>{{ testimonial.testimonial | safe}}</td>
+            <td>{{ testimonial.get_status_display }}</td>
+            <td>
+                <div class="col d-flex flex-column-reverse align-items-stretch ">
+                    <button class="btn btn-publish m-1" data-testimonial-id="{{ testimonial.id }}" data-testimonial-status="{{ testimonial.status }}">
+                        {% if testimonial.status == 1 %}
+                            Unpublish
+                        {% else %}
+                            Publish
+                        {% endif %}
+                    </button>
+                    <button class="btn btn-delete m-1" data-testimonial-id="{{ testimonial.id }}">Delete</button>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+<div class="modal fade" id="deleteModal" tabindex="-1"
+aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title"
+        id="deleteModalLabel">Delete testimonial?</h5>
+      <button type="button" class="btn-close"
+        data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      Are you sure you want to delete this testimonial?
+      This action cannot be undone.
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary"
+        data-bs-dismiss="modal">Close</button>
+      <a id="deleteConfirm" href="#" class="btn
+        btn-danger">Delete</a>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<div class="modal fade" id="publishModal" tabindex="-1"
+aria-labelledby="publishModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"
+          id="publishModalLabel">Publish testimonial?</h5>
+        <button type="button" class="btn-close"
+          data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="modalbody-innertext">Are you sure you want to publish this testimonial?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+          data-bs-dismiss="modal">Close</button>
+        <a id="publishConfirm" href="#" class="btn
+          btn-danger">Publish</a>
+      </div>
+  </div>
+</div>
+</div>
+
+{% endblock %}
+{% block extras %}
+  <script src="{% static 'js/testimonials.js' %}"></script>
+{% endblock %}

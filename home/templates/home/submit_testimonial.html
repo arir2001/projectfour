@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mt-2">
+    <div class="row">
+        <div class="col-md-6 mt-2">
+            <div class="row">
+                <div class="col-12 col-md-4 text-center">
+                    <img src="{% static 'images/logo.webp' %}" style="width: 75%;" alt="logo">
+                </div>
+            </div>
+            <div class="row">
+                <div class="row p-4">
+                    <h2>Submit a testimonial!</h2>
+                    <p>
+                       Have you benefited from reading my blog, listening to my podcast or my coaching?
+                       Submit a testimonial !
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mt-2 mb-2">
+            <div class="row justify-content-center">
+                <div class="col">
+                    <form method="post"> 
+                        {% csrf_token %}
+                        {{ form | crispy }}  
+                        
+                        <button class="btn btn-secondary" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

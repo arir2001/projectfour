@@ -1,4 +1,4 @@
-from .models import Inquire, CollaborateRequest
+from .models import CollaborateRequest, Testimonial
 from django import forms
 
 
@@ -10,3 +10,11 @@ class CollaborateForm(forms.ModelForm):
             'service': forms.Select(), 
         }
 
+
+class TestimonialForm(forms.ModelForm):
+    class Meta:
+        model = Testimonial
+        fields = ('name', 'age', 'extra_detail', 'testimonial', 'service')  
+        widgets = {
+            'service': forms.Select(),  
+        }
