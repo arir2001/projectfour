@@ -8,13 +8,22 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 
 # Post and comment models adapted from CodeInstitute Django Blog
 
+from django.shortcuts import render
 
+def csrf_failure(request, reason=""):
+    return render(request, "blog/csrf_failure.html", {'reason': reason})
+
+
+
+
+#creates list of posts for blog
 class PostList(generic.ListView):
     queryset = Post.objects.filter(status=1)
     template_name = 'blog/post_list.html'
     paginate_by = 6
 
 
+#allows search foor titles
 def search_posts(request):
     queryset = Post.objects.filter(status=1)
 
@@ -33,6 +42,7 @@ def search_posts(request):
     return render(request, "blog/post_list.html")
 
 
+#allows someone to view an individual post, its comments
 def post_detail(request, slug):
     queryset = Post.objects.filter(status=1)
     post = get_object_or_404(queryset, slug=slug)
@@ -68,6 +78,7 @@ def post_detail(request, slug):
     )
 
 
+#allows some one to edit their comment, and it becomes un approved again. 
 def comment_edit(request, slug, comment_id):
     """View to edit comments"""
     if request.method == "POST":
@@ -90,6 +101,7 @@ def comment_edit(request, slug, comment_id):
     return HttpResponseRedirect(reverse('blogpost', args=[slug]))
 
 
+#allows someone to delete their comment. 
 def comment_delete(request, comment_id, slug=None):
     """View to delete comment"""
     comment = get_object_or_404(Comment, pk=comment_id)
@@ -107,6 +119,7 @@ def comment_delete(request, comment_id, slug=None):
     return HttpResponseRedirect(referer_url)
 
 
+#login required to be super user. Approves a comment, or unapproves it. 
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def comment_approve(request, comment_id):
@@ -126,6 +139,7 @@ def comment_approve(request, comment_id):
     return HttpResponseRedirect(referer_url)
 
 
+#show the comments in dashboard
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def user_admin(request):
@@ -146,6 +160,7 @@ def user_admin(request):
     )
 
 
+#allows management approvals.
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def comments_admin(request):
@@ -164,6 +179,7 @@ def comments_admin(request):
     )
 
 
+#blog post creation, updating. Redirects to the post detail.
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def create_or_update_post(request, slug=None):
@@ -192,6 +208,7 @@ def create_or_update_post(request, slug=None):
     return render(request, 'blog/post_form.html', {'form': form})
 
 
+#show the posts in dashboard
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def blogposts_admin(request):
@@ -200,6 +217,7 @@ def blogposts_admin(request):
     return render(request, "blog/blogpostadmin.html", {"posts": posts})
 
 
+#view to approve or unapprove. 
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def blog_publish_admin(request, slug):
@@ -208,14 +226,15 @@ def blog_publish_admin(request, slug):
     referer_url = request.META.get('HTTP_REFERER', '/blog/user_admin/')
 
     if request.user.is_superuser:
-        post.status = 1 if post.status == 0 else 0
-        post.save()
+        post.status = 1 if post.status == 0 else 0  #if post status is 1, set it to 0, otherwise leave as 0
+        post.save() 
         messages.success(
          request, 'Post published!'
          if post.status == 1 else 'Post unpublished!')
     return HttpResponseRedirect(referer_url)
 
 
+#delete a blog post, redirect to user admin
 @login_required
 @user_passes_test(lambda u: u.is_superuser)
 def post_delete(request, slug):

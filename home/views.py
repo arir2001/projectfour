@@ -4,12 +4,13 @@ from .forms import CollaborateForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required, user_passes_test
 
-
+#index page
 def home(request):
     testimonials = Testimonial.objects.filter(status=1)
     return render(request, 'home/index.html', {'testimonials': testimonials})
 
 
+#inquiry form request -- allows users and non users to inquire.
 def inquiry(request):
     collaborate_form = CollaborateForm()
     inquire = Inquire.objects.all()
@@ -30,6 +31,7 @@ def inquiry(request):
     })
 
 
+#inquiry list for admin page-- allows archiving.  
 @login_required
 @user_passes_test(lambda u: u.is_staff)
 def inquiry_list(request):
@@ -41,6 +43,7 @@ def inquiry_list(request):
     })
 
 
+#view to archive the inquiry, redirected to the inquiry list
 @login_required
 @user_passes_test(lambda u: u.is_staff)
 def archive_inquiry(request, inquiry_id):
@@ -50,6 +53,7 @@ def archive_inquiry(request, inquiry_id):
     return redirect('inquiry_list')
 
 
+#view to unarchive the inquiry. 
 @login_required
 @user_passes_test(lambda u: u.is_staff)
 def un_archive_inquiry(request, inquiry_id):

@@ -12,7 +12,6 @@
                 </div>
             </div>
             <div class="row">
-                <!-- Updated on field goes in here -->
                 <div class="row p-4 d-none">
                     {% for inquired in inquire %}
                     
@@ -39,7 +38,6 @@
         <div class="col-md-6 mt-2 mb-2">
             <div class="row justify-content-center">
                 <div class="col ">
-                    <!-- add your form here. Your submit button should have the classes of btn, btn-secondary -->
                     <form method="post"> 
                         {% csrf_token %}
                         {{ collaborate_form | crispy }}

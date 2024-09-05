@@ -2,7 +2,8 @@
 
 ## Overview
 
-This project is a Full-Stack web application developed using the MVC framework. The application includes a blog, testimonials, comment sections, inquiry form and front-end admin features. The development process followed Agile methodologies, ensuring iterative progress and continuous improvement through regular feedback.
+This project is a Full-Stack web application developed using the model-view-container framework. The website includes a blog, testimonials, comment sections, inquiry form and front-end admin features. The development process followed Agile methodologies, ensuring iterative progress and continuous improvement through regular feedback.
+
 
 ## Design
 A pinterest was set up to inspire the design of the website, which you can view [here](https://ie.pinterest.com/23annarooney/anna-website/). The mood of the website was strong female entreperneur.
@@ -15,19 +16,40 @@ The colors and fonts of the site:
     <img width="50%" alt="fonts" src="https://github.com/user-attachments/assets/77bc35b3-44e3-4e6d-a461-1020bbdfe1b8">
 </div>
 
+## Visitor experiences
+
+# As a first time visitor, I want to:
+
+- See testimonials
+- View the blog to get a sense of the life coach
+
+# As a returning visitor, I want to:
+
+- Sign up as a user
+- Read the blog
+- Comment on the blog
+- Edit my comments if necessary
+
+# As a frequent visitor, I want to:
+
+- Share blog posts
+- Inquire about possibly working together
+- View updates on how the beverages are brewed through their social media sites.
 
 ## Responsiveness: 
 
-<div align="center">
-  <img width = "33%" alt="Iphone response" src="https://github.com/user-attachments/assets/5230c30a-70fd-4bd1-9424-c8fd381728c3">
+Bootstrap classes were used so each item was responsive for all screen sizes.
+
+<div style="display: flex; justify-content: center;">
+  <img width = "31%" alt="Iphone response" src="https://github.com/user-attachments/assets/5230c30a-70fd-4bd1-9424-c8fd381728c3">
   
-  <img width = "33%" alt="Ipad response" src="https://github.com/user-attachments/assets/376c56d7-58d4-4186-a36d-7284f3d99654">
+  <img width = "31%" alt="Ipad response" src="https://github.com/user-attachments/assets/376c56d7-58d4-4186-a36d-7284f3d99654">
   
-  <img width = "33%" alt="Nest hub max response" src="https://github.com/user-attachments/assets/17b6592d-c7cd-4dc7-83d2-b7950b623996">
+  <img width = "31%" alt="Nest hub max response" src="https://github.com/user-attachments/assets/17b6592d-c7cd-4dc7-83d2-b7950b623996">
 </div>
 
 ## User differences
-
+The navbar changes according to user profile: 
 <div align="center">
   Superuser navbar: 
   <img width="80%" alt="navbar superuser" src="https://github.com/user-attachments/assets/59afba7f-5c82-450e-8ee8-cfad78f6a2bf">
@@ -43,13 +65,9 @@ The colors and fonts of the site:
 Non-users:
 - can view blog posts, comments, and all public pages.
 
-
 Normal users:
 - can view all public pages
-- post and edit their posts
-- press reply to inquiries, which redirects you to email
-- archive/ unarchive inquiries.
-
+- post and edit their comments
 
 Super users:
 - can view all pages
@@ -58,14 +76,14 @@ Super users:
 - press reply to inquiries, which redirects you to email
 - archive/ unarchive inquiries.
 
-
+If a normal user or non user attempts to access Super User pages, for example like the blog admin page, they are redirected to the log in page. 
 ## Agile Development Process
 
 ### User Stories
 User stories were created to capture the requirements and expectations of the end-users. These stories were used to guide the development process, with each story tied to a specific sprint.
 
 ### Sprints
-The project was divided into multiple sprints. Each sprint focused on delivering a specific set of features, with tasks tracked and managed using [Agile Tool/Platform used].
+The project was divided into multiple sprints. Each sprint focused on delivering a specific set of features, with tasks tracked and managed using github projects and issues: [Github projects](https://github.com/users/arir2001/projects/2): 
 
 - **Sprint 1: Initial Setup & Core Features**
   - Setup MVC Framework: Established the project structure using Django. Basic template from [Code Institute's Blog app](https://github.com/NielMc/django_blog): 
@@ -90,13 +108,12 @@ The project was divided into multiple sprints. Each sprint focused on delivering
 - Posts can include images, categories, and tags.
 
 ### Testimonials
-- Users can submit testimonials.
-- Admins can approve or reject testimonials.
+- Testimonials can be updated through back end admin
+- In the future, an ability for registered users to submit testimonials which would then be approved by admins. 
 
 ### Comments
 - Users can comment on blog posts.
-- Comments are moderated by admins.
-- **Reply to Comments**: Users can reply to specific comments, enabling threaded discussions.
+- Comments are moderated by admins, and to be viewed by public must be approved. 
 
 ### Admin Features
 - **Dashboard**: Admins have access to a dedicated dashboard for managing site content.
@@ -120,10 +137,6 @@ The project was divided into multiple sprints. Each sprint focused on delivering
 ### Testimonial Model
 - **Fields**: `user`, `content`, `approved`, `created_at`
 - **Description**: Stores testimonials submitted by users, which admins can approve or reject.
-
-### Reply Model (New)
-- **Fields**: `comment`, `author`, `content`, `created_at`
-- **Description**: Stores replies to specific comments, allowing users to engage in threaded discussions.
 
 ## Technologies Used
 
