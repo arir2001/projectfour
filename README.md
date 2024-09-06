@@ -58,9 +58,12 @@ Super users:
 
 ### The layout: 
 
-<img width="953" alt="LANDING PAGE" src="https://github.com/user-attachments/assets/a43573fb-c821-4736-bf38-491250e8b78e">
+<img width="80%" alt="LANDING SECTION" src="https://github.com/user-attachments/assets/a43573fb-c821-4736-bf38-491250e8b78e">
+<img width="80%" alt="ABOUT SECTION" src="https://github.com/user-attachments/assets/2ffcd78f-2ea0-4e70-b0db-ec3321c4eaa8">
+<img width="80%" alt="INQUIRE SECTION" src="https://github.com/user-attachments/assets/b511281c-8810-4893-9107-1edb195f541b">
+<img  width="80%" alt="CONTENT SECTION" src="https://github.com/user-attachments/assets/294e0110-1141-4fb9-b323-5acbfec78880">
+<img width="80%" alt="FOOTER"  src="https://github.com/user-attachments/assets/498007a3-f06d-47c5-8f83-bb78da6058a8">
 
-<img width="1663" alt="INQUIRE SECTION" src="https://github.com/user-attachments/assets/b511281c-8810-4893-9107-1edb195f541b">
 ## Agile Development Process
 
 ### User Stories
@@ -75,7 +78,7 @@ The project was divided into multiple sprints. Each sprint focused on delivering
 
 - **Sprint 2: Blog & Testimonials**
   - Blog Functionality: Developed blog post creation, editing, and deletion.
-  - Testimonials: Added testimonial submission and admin approval features.
+  - Testimonials MODEL added.
 
 - **Sprint 3: Comments & UI Enhancements**
   - Comment System: Enabled commenting on blog posts with moderation.
