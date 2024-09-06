@@ -17,19 +17,19 @@ The colors and fonts of the site:
 
 ## Visitor experiences
 
-# As a first time visitor, I want to:
+### As a first time visitor, I want to:
 
 - See testimonials
 - View the blog to get a sense of the life coach
 
-# As a returning visitor, I want to:
+### As a returning visitor, I want to:
 
 - Sign up as a user
 - Read the blog
 - Comment on the blog
 - Edit my comments if necessary
 
-# As a frequent visitor, I want to:
+### As a frequent visitor, I want to:
 
 - Share blog posts
 - Inquire about possibly working together
@@ -107,44 +107,27 @@ The project was divided into multiple sprints. Each sprint focused on delivering
 
 - **Sprint 4: Admin Features & Deployment**
   - Admin Dashboard: Completed admin functionalities for content management.
+  - Testimonial submissions, administration.
   - Final Testing & Deployment: Conducted testing, fixed bugs, and deployed the application.
 
 ## Features
 
 ### Blog
-- Users can create, edit, and delete posts.
+- Superusers can create, edit, and delete posts.
 - Posts can include images, categories, and tags.
 
 ### Testimonials
-- Testimonials can be updated through back end admin
-- In the future, an ability for registered users to submit testimonials which would then be approved by admins. 
+- Registered users can submit testimonials which would then be approved by admins.
+- These are then viewed on the index page in aa slide show. 
 
 ### Comments
 - Users can comment on blog posts.
 - Comments are moderated by admins, and to be viewed by public must be approved. 
 
 ### Admin Features
-- **Dashboard**: Admins have access to a dedicated dashboard for managing site content.
-- **User Management**: Admins can assign roles and manage user access.
-- **Content Moderation**: Admins can approve or delete comments.
-
-## Models
-
-### User Model
-- **Fields**: `username`, `email`, `password`, `role`
-- **Description**: Manages user authentication and authorization. Includes role-based access control.
-
-### Post Model
-- **Fields**: `title`, `content`, `author`, `created_at`, `updated_at`
-- **Description**: Stores blog posts, including metadata about the author and timestamps for creation and updates.
-
-### Comment Model
-- **Fields**: `post`, `author`, `content`, `created_at`
-- **Description**: Stores comments associated with blog posts, allowing users to interact with content.
-
-### Testimonial Model
-- **Fields**: `user`, `content`, `approved`, `created_at`
-- **Description**: Stores testimonials submitted by users, which admins can approve or reject.
+- **Dashboard**: Admins have access to a front end dashboard for managing site content.
+- **Content Moderation**: Admins can approve or delete comments, testimoniaals
+- **Blog**: Admins can write, edit, post, unpublish blogs. 
 
 ## Technologies Used
 
@@ -154,60 +137,7 @@ The project was divided into multiple sprints. Each sprint focused on delivering
 - **Version Control**: Git & GitHub
 - **Deployment**: Heroku
 
-### Difference between my project and Code Institute's
-
-As there are quite a few similarities between this project and Code Institute's upon which this is based, here is a detailed break down of what I added: 
-#### **1. Project Structure**
-- **This Project's (`projectfour`)**:
-  - **File**: `models.py` (in `blog, home` apps)
-    - Models: `Post`, `Comment`, `Testimonial`
-    - difference:  `Testimonial` model and more detailed user authentication with role-based access control.
-  - **File**: `views.py` (in `blog` app)
-    - Handles CRUD operations for posts, comments.
-
-- **Reference Project (`django_blog`)**:
-  - **File**: `models.py` (in `blog` app)
-    - Models: `Post`, `Comment`
-    - Simpler structure focusing mainly on posts and comments.
-  - **File**: `views.py` (in `blog` app)
-    - Basic blog functionality without additional models like `Testimonial`.
-
-#### **2. Models Comparison**
-- **Post Model**:
-  - Both projects use a `Post` model with similar fields (`title`, `content`, `author`, `created_at`, `updated_at`).
-
-- **Comment Model**:
-  - Both projects include a `Comment` model associated with `Post` and CRUD abilities. 
-
-- **Testimonial Model**:
-  - **My Project**:
-    - `Testimonial` model (not present in `django_blog`):
-      - Fields: `user`, `content`, `approved`, `created_at`.
-      - **File**: `models.py` (in `home` app).
-      - testimonials, managed by admins in back admin.
-  - **Reference Project**:
-    - Does not include this model.
-
-#### **3. Views Comparison**
-- **My Project**:
-  - Manages posts, comments, and testimonials with separate views. Admin functionality is more developed with additional views for managing testimonials.
-  - **Files**: `views.py` (in `blog` app).
-- **Reference Project**:
-  - Focuses on simpler blog post and comment views without additional admin features or testimonial management.
-  - **Files**: `views.py` (in `blog` app).
-
-#### **4. Features**
-- **My Project**:
-  - **Added Features**: Testimonials, role-based access control, admin dashboard.
-  - More complex interactions, allowing admins to moderate comments and testimonials.
-- **Reference Project**:
-  - Basic blog and comment features without the additional layers of user roles or testimonials.
-
-### Summary of Differences
-My project extends the functionality of the reference project by adding a `Testimonial` model, role-based access control, and enhanced font-end admin features. The reference project is simpler, focusing primarily on the blog and comment system without these additional features. My project has a more comprehensive structure and user interaction model. 
-
-
-
+# Deployment
 ## Installation & Setup
 The site was deployed to Heruko App. The steps to do so are as follows:
 - Launch Heroku app
@@ -219,6 +149,7 @@ The site was deployed to Heruko App. The steps to do so are as follows:
 
 
 ## Testing
+The website has been tested to ensure functionality, responsiveness, and data integrity across all views and features.
 
 # In Lighthouse: 
 - The original score was 62%. This was changed to 97 by uploading the images as webp instead of pngs. 
@@ -226,12 +157,22 @@ The site was deployed to Heruko App. The steps to do so are as follows:
     <img width="80%" alt="Lighthouse Report" src="https://github.com/user-attachments/assets/38075c21-0250-4325-9820-9f639fbd9dd1">
 </div>
 
+# Django Testing
 
+# Manual Testing
+Views: Each view was manually tested to ensure correct functionality, such as page loading, navigation, and user interactions (e.g., posting and commenting).
+Responsiveness: The website was tested across various devices (mobile, tablet, desktop) to ensure a consistent user experience.
+# Automated Testing
+The test_views.py files in the blog and home apps include tests for:
 
+- View Accessibility: Ensuring views return the correct HTTP status codes (e.g., 200 OK for accessible pages).
+- Template Usage: Verifying that the correct templates are rendered for specific views.
+- Redirection: Testing that unauthenticated users are correctly redirected (e.g., to the login page).
+- CRUD Operations: Tests for creating, editing, and deleting posts and comments.
 
+There are also test_forms.py for both apps, which check if the forms are valid. 
 
-## Deployment
-
-The application is deployed on Heroku.
+# Running Tests
+To run the tests locally, the following command was put into the terminal: python manage.py test.
 
 
