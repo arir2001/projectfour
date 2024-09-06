@@ -97,6 +97,7 @@
                 
                 
                 <div class="row p-2 mt-5 d-flex justify-content-center">
+                    {% if testimonials %}
                     <h2 class="libre-baskerville-regular text-center"> What my clients have said...</h2>
                     <div class="row testimonialdiv border-0 rounded-pill">
                         {% for testimonial in testimonials %}
@@ -112,25 +113,21 @@
                                 </div>
                             </div>                    
                         </div>
-                        {% endfor %}
+                        {% endfor %}                
                     </div>
+                    {% endif %} 
+                    <div class="div row d-flex justify-content-center">
+                        <h2 class="libre-baskerville-regular text-center"> Inspired by my blog? Happy with my services?</h2>     
+                        <div class="col-md-4 text-center">
+                            <div class="servicesbutton  m-2 rounded-pill libre-baskerville-regular"><a class="buttonbrowncolor btn btn-lg m-2" href="{% url 'submit_testimonial' %}">Submit a testimonial</a></div> 
+                        </div>    
+                    </div>   
                 </div>
-
             </div>
         </div>
     </section>
     <section id="contentlanding">
-        <div class="row d-flex p-3"> 
-            <div class="col-md-6 d-flex justify-content-center mt-2">
-                <div class="video-wrapper" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0;">
-                    <div class="video-placeholder" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;" onclick="loadVideo()">
-                        <img src="https://img.youtube.com/vi/VIDEO_ID/hqdefault.jpg" alt="Video Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div class="play-button" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 64px; height: 64px; background: rgba(0, 0, 0, 0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                            <svg width="24" height="24" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="row d-flex p-3 justify-content-around"> 
             <div class="col-md-6 d-flex align-items-center mt-3">
                 <div class="m-2 p-2 text-center text-wrap libre-baskerville-regular d-none d-md-block">
                     <h4>
@@ -140,6 +137,11 @@
                         
                             and power up your day!</span>
                     </h4>
+                    <div class ="rounded-pill">
+                        <a href="https://www.youtube.com" target="_blank" class="btn btn-danger" style="text-decoration: none;">
+                            <i class="fab fa-youtube"></i> YouTube
+                        </a>             
+                    </div>
                 </div>
             </div>
         </div>
@@ -185,11 +187,7 @@
 
 {% block extras %}
     <script src="{% static 'js/script.js' %}"></script>
-    <script>
-        function loadVideo() {
-            const placeholder = document.querySelector('.video-placeholder');
-            placeholder.innerHTML = '<iframe class="embed-responsive-item video" width="100%" height="100%" src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1" allowfullscreen></iframe>';
-        }
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
 {% endblock %}
 
