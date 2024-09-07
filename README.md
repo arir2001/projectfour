@@ -78,12 +78,32 @@ Super users:
 - archive/ unarchive inquiries.
 
 ### The layout: 
-
+## INDEX PAGE
 <img width="80%" alt="LANDING SECTION" src="https://github.com/user-attachments/assets/a43573fb-c821-4736-bf38-491250e8b78e">
 <img width="80%" alt="ABOUT SECTION" src="https://github.com/user-attachments/assets/2ffcd78f-2ea0-4e70-b0db-ec3321c4eaa8">
-<img width="80%" alt="INQUIRE SECTION" src="https://github.com/user-attachments/assets/b511281c-8810-4893-9107-1edb195f541b">
-<img  width="80%" alt="CONTENT SECTION" src="https://github.com/user-attachments/assets/294e0110-1141-4fb9-b323-5acbfec78880">
-<img width="80%" alt="FOOTER"  src="https://github.com/user-attachments/assets/498007a3-f06d-47c5-8f83-bb78da6058a8">
+<img width="80%" alt="INQUIRE SECTION" 2024-09-07 at 20 24 10" src="https://github.com/user-attachments/assets/6601ccdb-0530-4ee5-8b29-f0f38eb305a5">
+<img width="80%" alt="TESTIMONIAL SECTION" src="https://github.com/user-attachments/assets/64c62832-ce6c-413d-909c-47ebc0300221">
+<img width="80%" alt="FOOTER, CONTENT SECTION"   src="https://github.com/user-attachments/assets/c558666e-1f3e-401c-a48d-4c90e34d68b3">
+
+## INQUIRE PAGE
+<img width="80%" alt="INQUIRE" src="https://github.com/user-attachments/assets/1f5757fb-6ef3-44a7-9faa-22e4031b775e">
+
+## BLOG PAGE
+<img width="80%" alt="POSTS"  src="https://github.com/user-attachments/assets/1b281ece-f4db-4ce1-aaf4-956aec68affc">
+<img width="80%" alt="BLOG PAGE" src="https://github.com/user-attachments/assets/da5b8afa-e119-4ec6-bcc9-5c828892dc37">
+<img width="80%" alt="COMMENTS ON BLOG PAGE" src="https://github.com/user-attachments/assets/42375f57-6f2a-4b24-a9d2-06420f776755">
+<img width="80%" alt="COMMENT AWAITING APPROVAL" src="https://github.com/user-attachments/assets/02ba6aad-b819-43f2-acf1-66d25ca8cddf">
+
+## ADMIN PAGE
+<img width="80%" alt="ADMIN PAGE" src="https://github.com/user-attachments/assets/d81d55f9-4a86-4562-a7c0-cf2f5eb5d416">
+<img width="80%" alt="POST ADMIN PAGE" src="https://github.com/user-attachments/assets/ee6cef8a-1e2d-4205-840b-1792ad272666">
+<img width="80%" alt="CREATE POST ADMIN PAGE" src="https://github.com/user-attachments/assets/ec9efe9e-ecdb-4964-9604-aecca430ef03">
+<img width="80%" alt="COMMENTS ADMIN PAGE"  src="https://github.com/user-attachments/assets/7652913e-1d8c-44f1-bba9-f234c47516a4">
+<img width="80%" alt="INQUIRIES PAGE" src="https://github.com/user-attachments/assets/5e43656c-c648-485e-ab6a-497cc5228a14">
+<img width="80%" alt="TESTIMONIALS ADMIN PAGE"  src="https://github.com/user-attachments/assets/6e252ea8-cdb2-4b17-a061-804c7e402ac3">
+
+## SUBMISSION PAGE
+<img width="80%" alt="TESTIMONIALS SUBMIT PAGE" src="https://github.com/user-attachments/assets/208e816d-ab27-4725-be38-7b4ee4bf00b5">
 
 ## Agile Development Process
 
@@ -118,7 +138,7 @@ The project was divided into multiple sprints. Each sprint focused on delivering
 
 ### Testimonials
 - Registered users can submit testimonials which would then be approved by admins.
-- These are then viewed on the index page in aa slide show. 
+- These are then viewed on the index page in a slide show. 
 
 ### Comments
 - Users can comment on blog posts.
@@ -157,11 +177,11 @@ The website has been tested to ensure functionality, responsiveness, and data in
     <img width="80%" alt="Lighthouse Report" src="https://github.com/user-attachments/assets/38075c21-0250-4325-9820-9f639fbd9dd1">
 </div>
 
-# Django Testing
-
 # Manual Testing
 Views: Each view was manually tested to ensure correct functionality, such as page loading, navigation, and user interactions (e.g., posting and commenting).
 Responsiveness: The website was tested across various devices (mobile, tablet, desktop) to ensure a consistent user experience.
+
+# Django Testing
 # Automated Testing
 The test_views.py files in the blog and home apps include tests for:
 
@@ -172,7 +192,24 @@ The test_views.py files in the blog and home apps include tests for:
 
 There are also test_forms.py for both apps, which check if the forms are valid. 
 
-# Running Tests
+Running THE Tests:
 To run the tests locally, the following command was put into the terminal: python manage.py test.
+
+## HTML AND CSS
+Index page: 
+<div>
+    <img width="40%" alt="html index page checked" src="https://github.com/user-attachments/assets/830769c5-e076-4fa1-8825-9124ae087578">
+    <img width="40%" alt="html testimonial page checked"  src="https://github.com/user-attachments/assets/4e0425ca-4ee4-4f21-9d63-91149a7e46c7">
+</div>
+<div>
+    <img width="40%" alt="html collaborate page checked" src="https://github.com/user-attachments/assets/eb6bbd83-801c-48b2-859f-9792cb24f612">
+    <img width="40%" alt="html blog post page checked"  src="https://github.com/user-attachments/assets/f10aa539-092b-41f8-a0d3-eee8c4f626af">
+</div>
+<div>
+    <img width="40%" alt="html individual post page checked"  src="https://github.com/user-attachments/assets/2456681b-afed-414c-a84d-8ba8beeb143d">
+    <img width="40%" alt="html blog post page checked"  src="https://github.com/user-attachments/assets/f10aa539-092b-41f8-a0d3-eee8c4f626af">
+</div>
+
+
 
 
