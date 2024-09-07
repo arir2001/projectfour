@@ -195,21 +195,60 @@ There are also test_forms.py for both apps, which check if the forms are valid.
 Running THE Tests:
 To run the tests locally, the following command was put into the terminal: python manage.py test.
 
-## HTML AND CSS
-Index page: 
+## HTML, CSS, JS TESTING 
+
+### HTML
+https://validator.w3.org/nu/
+In the html checker, there were a few issues with unclosed divs. These errors were due to the nature of django templates, and though effort was taken to ensure proper indentation, this cannot be avoided in django. 
 <div>
-    <img width="40%" alt="html index page checked" src="https://github.com/user-attachments/assets/830769c5-e076-4fa1-8825-9124ae087578">
-    <img width="40%" alt="html testimonial page checked"  src="https://github.com/user-attachments/assets/4e0425ca-4ee4-4f21-9d63-91149a7e46c7">
+    <img width="45%" alt="html index page checked" src="https://github.com/user-attachments/assets/830769c5-e076-4fa1-8825-9124ae087578">
+    <img width="45%" alt="html testimonial page checked"  src="https://github.com/user-attachments/assets/4e0425ca-4ee4-4f21-9d63-91149a7e46c7">
 </div>
 <div>
-    <img width="40%" alt="html collaborate page checked" src="https://github.com/user-attachments/assets/eb6bbd83-801c-48b2-859f-9792cb24f612">
-    <img width="40%" alt="html blog post page checked"  src="https://github.com/user-attachments/assets/f10aa539-092b-41f8-a0d3-eee8c4f626af">
+    <img width="45%" alt="html collaborate page checked" src="https://github.com/user-attachments/assets/eb6bbd83-801c-48b2-859f-9792cb24f612">
+    <img width="45%" alt="html blog post page checked"  src="https://github.com/user-attachments/assets/f10aa539-092b-41f8-a0d3-eee8c4f626af">
 </div>
 <div>
-    <img width="40%" alt="html individual post page checked"  src="https://github.com/user-attachments/assets/2456681b-afed-414c-a84d-8ba8beeb143d">
-    <img width="40%" alt="html blog post page checked"  src="https://github.com/user-attachments/assets/f10aa539-092b-41f8-a0d3-eee8c4f626af">
+    <img width="45%" alt="html individual post page checked"  src="https://github.com/user-attachments/assets/2456681b-afed-414c-a84d-8ba8beeb143d">
+    <img width="45%" alt="html blog post page checked"  src="https://github.com/user-attachments/assets/f10aa539-092b-41f8-a0d3-eee8c4f626af">
+</div>
+<div>
+    <img width="45%" alt="html individual post page checked"  src="https://github.com/user-attachments/assets/2456681b-afed-414c-a84d-8ba8beeb143d">
+    <img width="45%" alt="html blog post page checked"  src="https://github.com/user-attachments/assets/f10aa539-092b-41f8-a0d3-eee8c4f626af">
 </div>
 
+- each an every page was checked, with any errors only being the django template issues, and so for levity, only a few screenshots are uploaded. 
+- The only exception were the pages in which the summer note form is inserted in the page, like the post creation page. These errors cannot be helped as thee html checker does not understand the nature of the summernote widget being inserted.
+<img width="75%"  alt="summer note errors" src="https://github.com/user-attachments/assets/5cf5e88b-a2ad-4c5f-b0f3-22d6c1cbbd46">
+These errors did not affect the user experience.
 
+### CSS
+https://jigsaw.w3.org/css-validator/
+There were no CSS errors.
+<p>
+    <a href="http://jigsaw.w3.org/css-validator/check/referer">
+        <img style="border:0;width:88px;height:31px"
+            src="http://jigsaw.w3.org/css-validator/images/vcss"
+            alt="Valid CSS!" />
+    </a>
+</p>
+
+### JS : 
+https://jshint.com/
+In JS hint, all JS files were compiled. This was the analysis: 
+There are 13 functions in this file.
+
+Function with the largest signature take 1 arguments, while the median is 1.
+
+Largest function has 17 statements in it, while the median is 4.
+
+The most complex function has a cyclomatic complexity value of 5 while the median is 1.
+
+There were no errors. 
+
+### PYTHON: 
+https://pep8ci.herokuapp.com/
+The CI python linter checked the python code according to pep 8 guidelines: 
+<img width="80%" alt="" src="https://github.com/user-attachments/assets/65a36454-96d6-4519-ba93-c1f0e989d6ca">
 
 
