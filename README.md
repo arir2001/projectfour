@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project is a Full-Stack web application developed using the moodel-views-controler framework. The application includes a blog, testimonials, comment sections, inquiry form and front-end admin features. The development process followed Agile methodologies, ensuring iterative progress and continuous improvement through regular feedback.
+This is a Full-Stack web application developed using the moodel-views-controler djaango framework. The website includes a blog, testimonials, comment sections, inquiry form and front-end admin features. The development process followed Agile methodologies, with iterative progress and continuous improvement through sprints.
 
 ## Design
 A pinterest was set up to inspire the design of the website, which you can view [here](https://ie.pinterest.com/23annarooney/anna-website/). The mood of the website was strong female entreperneur.
@@ -17,9 +17,9 @@ The colors and fonts of the site:
 
 ## Visitor experiences
 
-### As a first time visitor, I want to:
-
-- See testimonials
+### As a first time visitor, I want to
+- Understand the point of the business
+- See the possble services
 - View the blog to get a sense of the life coach
 
 ### As a returning visitor, I want to:
@@ -33,7 +33,7 @@ The colors and fonts of the site:
 
 - Share blog posts
 - Inquire about possibly working together
-- View updates on how the beverages are brewed through their social media sites.
+- Submit testimonials about how her services helped me.
 
 ## Responsiveness: 
 
@@ -137,7 +137,7 @@ The project was divided into multiple sprints. Each sprint focused on delivering
 - Posts can include images, categories, and tags.
 
 ### Testimonials
-- Registered users can submit testimonials which would then be approved by admins.
+- Registered users can submit testimonials which would then be approved by admins in the front end admin page.
 - These are then viewed on the index page in a slide show. 
 
 ### Comments
@@ -156,6 +156,17 @@ The project was divided into multiple sprints. Each sprint focused on delivering
 - **Database**: SQLite, Cloudinary
 - **Version Control**: Git & GitHub
 - **Deployment**: Heroku
+
+## Security features
+This project has several security features:
+- **Cross-Site Request Forgery (CSRF) Protection**: Django's built-in CSRF middleware is used to protect forms
+- **User Authentication**: Django’s authentication system is used for secure login and session management
+- **Password Management**: user passwords are securely hashed using Django's default password hasher
+
+## Future features and enhancements
+- **Enhanced User Profiles**: Future improvements will include the ability for users to manage their passwords, reply to comments and have comment threads.
+- **Improved Inquiry System**: Integration with third-party CRM tools to handle inquiries more effectively.
+
 
 # Deployment
 ## Installation & Setup
@@ -178,17 +189,17 @@ The website has been tested to ensure functionality, responsiveness, and data in
 </div>
 
 # Manual Testing
-Views: Each view was manually tested to ensure correct functionality, such as page loading, navigation, and user interactions (e.g., posting and commenting).
+Views: Each view was manually tested to ensure correct functionality, such as page loading, navigation, and user interactions posting and commenting).
 Responsiveness: The website was tested across various devices (mobile, tablet, desktop) to ensure a consistent user experience.
 
 # Django Testing
 # Automated Testing
 The test_views.py files in the blog and home apps include tests for:
 
-- View Accessibility: Ensuring views return the correct HTTP status codes (e.g., 200 OK for accessible pages).
-- Template Usage: Verifying that the correct templates are rendered for specific views.
-- Redirection: Testing that unauthenticated users are correctly redirected (e.g., to the login page).
-- CRUD Operations: Tests for creating, editing, and deleting posts and comments.
+- View Accessibility: ensuring views return the correct HTTP status codes (example: 200 OK for accessiblee pages).
+- Template Usage: verifying that the correct templates are rendered for specific views.
+- Redirection: testing that unauthenticated users are correctly redirected to the login page.
+- CRUD Operations: tests for creating, editing, and deleting posts and comments.
 
 There are also test_forms.py for both apps, which check if the forms are valid. 
 
@@ -250,5 +261,9 @@ There were no errors.
 https://pep8ci.herokuapp.com/
 The CI python linter checked the python code according to pep 8 guidelines: 
 <img width="80%" alt="" src="https://github.com/user-attachments/assets/65a36454-96d6-4519-ba93-c1f0e989d6ca">
+
+There were no errors. 
+
+
 
 
