@@ -81,7 +81,7 @@ Super users:
 ## INDEX PAGE
 <img width="80%" alt="LANDING SECTION" src="https://github.com/user-attachments/assets/a43573fb-c821-4736-bf38-491250e8b78e">
 <img width="80%" alt="ABOUT SECTION" src="https://github.com/user-attachments/assets/2ffcd78f-2ea0-4e70-b0db-ec3321c4eaa8">
-<img width="80%" alt="INQUIRE SECTION" 2024-09-07 at 20 24 10" src="https://github.com/user-attachments/assets/6601ccdb-0530-4ee5-8b29-f0f38eb305a5">
+<img width="80%" alt="INQUIRE SECTION" src="https://github.com/user-attachments/assets/6601ccdb-0530-4ee5-8b29-f0f38eb305a5">
 <img width="80%" alt="TESTIMONIAL SECTION" src="https://github.com/user-attachments/assets/64c62832-ce6c-413d-909c-47ebc0300221">
 <img width="80%" alt="FOOTER, CONTENT SECTION"   src="https://github.com/user-attachments/assets/c558666e-1f3e-401c-a48d-4c90e34d68b3">
 
@@ -271,4 +271,10 @@ There were no errors.
 
 
 
+# Acknowledgments: 
 
+The timer and slide show javascript was adapted from https://www.htmlcenter.com/blog/pausing-javascript-timers/ and https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_slideshow_auto .
+
+The Post and Comment model were adapted from the [Code Institute's Blog app](https://github.com/NielMc/django_blog). The javascript for deletion modals etc were also adapted from this, and the css aand html.
+
+The different images were taken from pinterest.
