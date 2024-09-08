@@ -65,8 +65,8 @@ class BlogTests(TestCase):
             'content': 'New content', 
             'status': '1', 
             'tags': 'tag1'})
-        print(response.status_code)  # Check if the response is a redirect or not
-        print(response.content)  # Print the full content to debug the issue
+        print(response.status_code)  # check if the response is a redirect or not
+        print(response.content)  # print the full content to debug the issue
         self.assertEqual(response.status_code, 302)
         self.assertTrue(Post.objects.filter(slug='new-post').exists())
 
