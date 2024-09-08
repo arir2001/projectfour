@@ -158,15 +158,17 @@ The project was divided into multiple sprints. Each sprint focused on delivering
 - **Deployment**: Heroku
 
 ## Security features
-This project has several security features:
 - **Cross-Site Request Forgery (CSRF) Protection**: Django's built-in CSRF middleware is used to protect forms
 - **User Authentication**: Django’s authentication system is used for secure login and session management
 - **Password Management**: user passwords are securely hashed using Django's default password hasher
 
-## Future features and enhancements
+## Possible future features and enhancements
 - **Enhanced User Profiles**: Future improvements will include the ability for users to manage their passwords, reply to comments and have comment threads.
-- **Improved Inquiry System**: Integration with third-party CRM tools to handle inquiries more effectively.
-
+- **Improved Inquiry System**: Allows admin to reply to inquiries inside admin page without ever leaving the website.
+- **Comment Threads**: Allows replies and commeent threads in comment section, likes for comments
+- **FIGMA pages** About section, services page, etc from the original figma design to enhance the site's marketing
+- **Advanced blog features**: scheduling posts, post likes, polls, reactions; enhanced search and filtering; tag system
+- **newsletters** subscription to blog notifications, comment replies notifications, newsletters to email.
 
 # Deployment
 ## Installation & Setup
@@ -201,7 +203,10 @@ The test_views.py files in the blog and home apps include tests for:
 - Redirection: testing that unauthenticated users are correctly redirected to the login page.
 - CRUD Operations: tests for creating, editing, and deleting posts and comments.
 
-There are also test_forms.py for both apps, which check if the forms are valid. 
+There are also tests for models which go as so: 
+
+- basic CRUD (Create, Read, Update, Delete) operations on the post, comment model.
+- There are also test_forms.py for both apps, which check if the forms are valid. 
 
 Running THE Tests:
 To run the tests locally, the following command was put into the terminal: python manage.py test.
